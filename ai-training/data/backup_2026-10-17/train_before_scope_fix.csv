@@ -1,0 +1,540 @@
+text,intent
+Hello,greeting
+Hi,greeting
+Good morning,greeting
+Good afternoon,greeting
+Good evening,greeting
+Kumusta,greeting
+Magandang araw,greeting
+Magandang umaga,greeting
+Magandang hapon,greeting
+Magandang gabi,greeting
+How are you,greeting
+Kamusta kayo,greeting
+Hi chatbot,greeting
+Hello Manila Zoo,greeting
+"Hi, kumusta ang Manila Zoo?",greeting
+"Hello po, ready na kami mag-tour sa zoo.",greeting
+"Good morning po, may tanong ako.",greeting
+"Kumusta chatbot, pwede magtanong?",greeting
+Hey there,greeting
+Hello po,greeting
+Hi ZooBot,greeting
+Yo,greeting
+Hey,greeting
+Magandang tanghali po,greeting
+Kumusta ka ZooBot?,greeting
+Hello! I need some help,greeting
+Hi there! Can you help me?,greeting
+Good day,greeting
+Musta?,greeting
+Hi po good evening,greeting
+Hello there friend,greeting
+Uy hello,greeting
+Greetings!,greeting
+Hi! First time ko dito,greeting
+Where is the lion?,navigation
+Where can I find the lion?,navigation
+Saan ang leon?,navigation
+Nasaan ang lion area?,navigation
+Where can I find the tiger?,navigation
+Saan makikita ang tigre?,navigation
+Where is the zebra section?,navigation
+Nasaan ang capybara area?,navigation
+How do I go to the ostrich area?,navigation
+Paano pumunta sa ostrich area?,navigation
+Where is the entrance?,navigation
+Saan ang entrance ng zoo?,navigation
+Where is the exit?,navigation
+Nasaan ang exit?,navigation
+Can you guide me around the zoo?,navigation
+Pwede mo ba akong gabayan paikot ng zoo?,navigation
+Where can I find the lion area?,navigation
+Saan banda yung lion area?,navigation
+How do I get to the entrance from here?,navigation
+Pwede mo ba akong i-guide papunta sa entrance?,navigation
+"Nasaan yung primates section, malapit ba sa map?",navigation
+Can you guide us to the deer area?,navigation
+Where is the Indoor Reptiles exhibit?,navigation
+How do I get to the Aviary?,navigation
+Saan ang Philippine Endemic?,navigation
+Paano pumunta sa Savana?,navigation
+Which way to the crocodiles?,navigation
+Where are the snakes kept?,navigation
+Nasaan ang mga ibon?,navigation
+Saan makikita ang Philippine Eagle?,navigation
+Where is the hyena enclosure?,navigation
+Directions to the python please,navigation
+How far is the aviary from the entrance?,navigation
+Saan ako dadaan papunta sa buwaya?,navigation
+Which path goes to the Main Entrance?,navigation
+I'm lost. How do I get back to the main entrance?,navigation
+Paano bumalik sa entrance?,navigation
+Where is the nearest exhibit from here?,navigation
+Is Indoor Reptiles near Outdoor Reptiles?,navigation
+Show me the way to the lemurs,navigation
+Saan dito yung mga unggoy?,navigation
+Where do I go to see the tortoise?,navigation
+How do I get from the Aviary to the Savana?,navigation
+Tell me about the lion,animal_info
+What does the capybara eat?,animal_info
+Ano ang kinakain ng leon?,animal_info
+How long do crocodiles live?,animal_info
+Is the Philippine Eagle endangered?,animal_info
+Gaano kalaki ang reticulated python?,animal_info
+What is the scientific name of the Philippine eagle?,animal_info
+Give me facts about the Philippine cockatoo,animal_info
+Ano ang habitat ng bayawak?,animal_info
+How heavy is a saltwater crocodile?,animal_info
+Is the saltwater crocodile dangerous?,animal_info
+Kwento ka naman tungkol sa agila,animal_info
+What is special about the red-footed tortoise?,animal_info
+Where do eagle owls come from originally?,animal_info
+What is the conservation status of the lion?,animal_info
+Anong klaseng hayop ang kalangay?,animal_info
+Do capybaras really like to swim?,animal_info
+How fast can a python grow?,animal_info
+Ilang taon nabubuhay ang pagong?,animal_info
+Is the crocodile a reptile?,animal_info
+What family does the tiger belong to?,animal_info
+Bakit endangered ang Philippine Eagle?,animal_info
+Tell me something interesting about the hornbill,animal_info
+Mapanganib ba ang buwaya?,animal_info
+Is the monitor lizard venomous?,animal_info
+What animals are native to the Philippines?,animal_info
+Ano ang pagkain ng mga ibon dito?,animal_info
+How tall does an ostrich get?,animal_info
+Can the cockatoo really talk?,animal_info
+Facts about the reticulated python please,animal_info
+Endemic ba sa Pilipinas ang kalangay?,animal_info
+How much is the ticket?,tickets
+Magkano ang ticket?,tickets
+How much is the entrance fee?,tickets
+Magkano ang entrance fee?,tickets
+How much do I need to pay?,tickets
+Magkano ang bayad para makapasok?,tickets
+Do you have admission tickets?,tickets
+May ticket ba kayo?,tickets
+Where can I buy tickets?,tickets
+Saan ako pwede bumili ng ticket?,tickets
+Can I buy tickets online?,tickets
+Pwede bang online bumili ng ticket?,tickets
+How much yung entrance ticket?,tickets
+Magkano po ang ticket for adults?,tickets
+Can I buy the tickets online or sa entrance lang?,tickets
+May discount ba for senior citizens?,tickets
+Magkano ang bayad para makapasok sa zoo?,tickets
+Is there a student discount?,tickets
+Free ba ang entrance para sa bata?,tickets
+How much for children?,tickets
+Do PWDs get a discount?,tickets
+Magkano para sa senior?,tickets
+Is admission free for toddlers?,tickets
+Do you accept GCash for tickets?,tickets
+How much for a group of ten?,tickets
+Pwede bang cash lang pambayad?,tickets
+Is there a family package?,tickets
+What is the price for foreigners?,tickets
+Magkano lahat kung apat kami?,tickets
+Do I need to pay for my 2 year old?,tickets
+What time does the zoo open?,zoo_hours
+What time does Manila Zoo open?,zoo_hours
+What time do you open?,zoo_hours
+When does the zoo open?,zoo_hours
+Anong oras kayo magbubukas?,zoo_hours
+Anong oras nagbubukas ang Manila Zoo?,zoo_hours
+Kailan bukas ang zoo?,zoo_hours
+Anong oras ang opening time?,zoo_hours
+What time does the zoo close?,zoo_hours
+Anong oras nagsasara ang zoo?,zoo_hours
+Is the zoo open today?,zoo_hours
+Bukas ba ang zoo ngayon?,zoo_hours
+What time nag-oopen ang Manila Zoo?,zoo_hours
+Anong oras nagc-close ang zoo?,zoo_hours
+Open ba ang zoo today kahit Monday?,zoo_hours
+What are the zoo hours sa weekend?,zoo_hours
+Bukas ba kayo from eight AM hanggang six PM?,zoo_hours
+Are you open on Mondays?,zoo_hours
+Open ba kayo kapag Monday?,zoo_hours
+What are your operating hours?,zoo_hours
+Is the zoo open on Christmas?,zoo_hours
+What time is the last entry?,zoo_hours
+Hanggang anong oras pwede pumasok?,zoo_hours
+Sarado ba kayo tuwing Lunes?,zoo_hours
+Are you open on Sundays?,zoo_hours
+Open ba kayo sa gabi?,zoo_hours
+When is the zoo closed?,zoo_hours
+Anong araw kayo sarado?,zoo_hours
+Where is the restroom?,facilities
+Saan ang CR?,facilities
+Nasaan ang comfort room?,facilities
+Where can I buy food?,facilities
+Saan pwede kumain?,facilities
+Is there a restaurant inside the zoo?,facilities
+May tindahan ba ng pagkain dito?,facilities
+Where can I get drinking water?,facilities
+May water refilling station ba?,facilities
+Do you have wheelchairs available?,facilities
+Is there a stroller rental?,facilities
+Where can we sit and rest?,facilities
+May lockers ba kayo?,facilities
+Is there a souvenir shop?,facilities
+Where is the nearest toilet?,facilities
+Saan ang banyo?,facilities
+Is there a breastfeeding room?,facilities
+May picnic area ba dito?,facilities
+Where can I charge my phone?,facilities
+Is there a snack bar near the aviary?,facilities
+Saan ang pinakamalapit na CR?,facilities
+Are there food stalls near the entrance?,facilities
+Where can I buy ice cream?,facilities
+May bentahan ba ng tubig?,facilities
+Is there a prayer room?,facilities
+Where can I wash my hands?,facilities
+I need help!,emergency
+Saan ang first aid?,emergency
+Where is the first aid station?,emergency
+My child is lost,emergency
+Nawawala ang anak ko,emergency
+Someone fainted,emergency
+May nahimatay dito,emergency
+I got hurt,emergency
+Nasugatan ako,emergency
+Call security please,emergency
+Tawagan ang guard,emergency
+I need an ambulance,emergency
+Kailangan ng ambulansya,emergency
+There's an accident,emergency
+May aksidente,emergency
+I lost my wallet,emergency
+Nawala ang bag ko,emergency
+An animal escaped!,emergency
+I was bitten,emergency
+Someone is having a heart attack,emergency
+Emergency!,emergency
+Tulong!,emergency
+My mom is feeling dizzy,emergency
+Where is the security office?,emergency
+Hindi ko makita ang kasama ko,emergency
+There is a fire,emergency
+Where can I park?,parking
+Saan pwede mag-park?,parking
+Is there parking at the zoo?,parking
+May parking ba kayo?,parking
+How much is the parking fee?,parking
+Magkano ang parking?,parking
+Is parking free?,parking
+Libre ba ang parking?,parking
+Can I bring my car?,parking
+Pwede bang magdala ng kotse?,parking
+Where do I park my motorcycle?,parking
+Saan ang parking ng motor?,parking
+Is there bus parking for field trips?,parking
+Where can the school bus park?,parking
+How do I get to Manila Zoo by jeep?,parking
+Paano pumunta sa Manila Zoo mula sa LRT?,parking
+Which LRT station is nearest?,parking
+Is there a drop-off point?,parking
+Saan pwedeng ibaba ang pasahero?,parking
+How many parking slots are there?,parking
+Is the parking area safe?,parking
+Pwede bang mag-overnight park?,parking
+What shows are available today?,events
+Are there any events this weekend?,events
+May show ba ngayon?,events
+What time is the animal feeding?,events
+Anong oras ang pagpapakain sa mga hayop?,events
+When is the lion feeding?,events
+Anong oras ang feeding ng buwaya?,events
+Are there any educational programs?,events
+May mga activities ba para sa bata?,events
+What is happening at the zoo today?,events
+Anong mga event ngayong buwan?,events
+Is there a feeding show for the birds?,events
+When is the next zoo tour?,events
+May guided tour ba?,events
+Are there special events on holidays?,events
+Anong schedule ng mga palabas?,events
+Can we join the keeper talk?,events
+Is there a night safari?,events
+Kailan ang susunod na event?,events
+Any upcoming activities?,events
+What time is the crocodile feeding?,events
+Are there workshops for students?,events
+Are pets allowed?,general
+Pwede bang magdala ng aso?,general
+Can I bring outside food?,general
+Pwede bang magdala ng pagkain sa loob?,general
+Is smoking allowed?,general
+Bawal ba manigarilyo?,general
+Can I take pictures?,general
+Pwede bang mag-picture?,general
+Is flash photography allowed?,general
+Can I use a drone?,general
+Is there Wi-Fi?,general
+May wifi ba dito?,general
+What is the history of Manila Zoo?,general
+Kailan itinayo ang Manila Zoo?,general
+Who manages the zoo?,general
+How can I contact the zoo?,general
+Ano ang contact number ninyo?,general
+Can I volunteer at the zoo?,general
+How do I adopt an animal?,general
+Thank you,general
+Salamat po,general
+Thanks for the help,general
+Can I feed the animals?,general
+Pwede bang pakainin ang mga hayop?,general
+Is the zoo wheelchair friendly overall?,general
+What are the zoo rules?,general
+Ano ang mga bawal sa loob?,general
+How big is the zoo?,general
+Can I bring a tripod?,general
+Bye,general
+saan ang banyo,facilities
+nasaan ang banyo,facilities
+saan ang cr,facilities
+san ang cr dito,facilities
+where is the restroom,facilities
+where is the toilet,facilities
+saan pwede kumain,facilities
+where is the exit,navigation
+saan ang labasan,navigation
+nasaan ang mga leon,navigation
+where are the hornbills,navigation
+saan ang aviary,navigation
+anong oras kayo bukas,zoo_hours
+anong oras bukas ang zoo,zoo_hours
+bukas ba kayo ngayon,zoo_hours
+anong oras kayo nagsasara,zoo_hours
+anong oras sarado ang zoo,zoo_hours
+oras ng zoo,zoo_hours
+what time do you open,zoo_hours
+what time do you close,zoo_hours
+opening hours,zoo_hours
+open ba kayo ngayong sabado,zoo_hours
+ilang oras bukas ang zoo,zoo_hours
+bukas pa ba kayo,zoo_hours
+Where is the zebra?,navigation
+saan ang zebra,navigation
+Where can I see the white tiger?,navigation
+nasan yung white tiger,navigation
+Where are the capybaras?,navigation
+saan makikita ang capybara,navigation
+How do I get to the lemurs?,navigation
+paano pumunta sa ring tailed lemur,navigation
+Where is the gibbon enclosure?,navigation
+which way to the monkeys,navigation
+san banda yung mga unggoy,navigation
+Where is the ostrich?,navigation
+Saan ang ostrich at deer?,navigation
+where can i find the cassowary,navigation
+How do I get to the hornbill?,navigation
+nasaan ang mga ibon na kalapati,navigation
+Where is the peacock?,navigation
+saan yung peacock,navigation
+Where are the cobras?,navigation
+saan nakalagay ang cobra,navigation
+where is outdoor reptiles,navigation
+Paano pumunta sa Philippine Endemic?,navigation
+Where is the Savana?,navigation
+directions to the primates please,navigation
+Take me to the tortoises,navigation
+saan ang mga pagong,navigation
+Is the tiger far from here?,navigation
+malayo pa ba ang zebra,navigation
+Which exhibit is closest to me?,navigation
+anong malapit na exhibit dito,navigation
+where is the albino python,navigation
+How do I get from the aviary to the reptiles?,navigation
+pano po pumunta sa aviary,navigation
+Where's the lion?,navigation
+Route to the butterfly garden,navigation
+saan po ang butterfly garden,navigation
+I want to go to the hyena,navigation
+where do i go to see the deer,navigation
+Can you show me where the sailfin lizard is?,navigation
+Paano ako makakarating sa Savana?,navigation
+where is the nearest cr po,facilities
+Is there a restroom near the zebra?,facilities
+saan pwedeng umihi,facilities
+Need to pee where's the toilet,facilities
+Is there a comfort room near the reptiles?,facilities
+san ang pinakamalapit na banyo dito,facilities
+Where is the food court?,facilities
+Saan ang Plaza Restaurant?,facilities
+where can we eat lunch,facilities
+gutom na kami saan may kainan,facilities
+Is there a coffee shop?,facilities
+May nagbebenta ba ng softdrinks?,facilities
+Where can I buy snacks?,facilities
+May tubig ba na libre?,facilities
+Where is the drinking fountain?,facilities
+Is there a place to change diapers?,facilities
+May changing table ba sa CR?,facilities
+Where can I rent a wheelchair?,facilities
+Are there benches in the shade?,facilities
+saan pwede magpahinga,facilities
+where can i buy souvenirs,facilities
+Is there an ATM inside?,facilities
+May ATM ba dito?,facilities
+Where can I throw my trash?,facilities
+saan ang basurahan,facilities
+pwede ba magdala ng pusa,general
+Are umbrellas allowed?,general
+Can I bring a speaker?,general
+Is vaping allowed?,general
+bawal ba ang vape,general
+Can I bring alcohol?,general
+Pwede bang magdala ng alak?,general
+Can I touch the animals?,general
+pwede bang hawakan ang hayop,general
+Is there a dress code?,general
+Can we have a picnic on the lawn?,general
+Is it okay to bring a skateboard?,general
+pwede ba bike sa loob,general
+Who built the Manila Zoo?,general
+how old is manila zoo,general
+Ilang taon na ang Manila Zoo?,general
+What is the zoo's email address?,general
+Can schools arrange a field trip?,general
+Paano mag-apply bilang volunteer?,general
+thanks a lot,general
+ok thank you po,general
+goodbye,general
+sige salamat,general
+Who are you?,general
+Ano ka?,general
+What can you do?,general
+Ano ang kaya mong gawin?,general
+Is the zoo safe for kids?,general
+Can I shout at the animals?,general
+Tell me about the zebra,animal_info
+ano ang kinakain ng zebra,animal_info
+Why do zebras have stripes?,animal_info
+Is the white tiger endangered?,animal_info
+Bakit puti ang white tiger?,animal_info
+How big is a capybara?,animal_info
+Ano ang capybara?,animal_info
+Is the capybara a rodent?,animal_info
+What do lemurs eat?,animal_info
+Saan galing ang ring-tailed lemur?,animal_info
+How long do gibbons live?,animal_info
+What does a gibbon eat?,animal_info
+Can an ostrich fly?,animal_info
+Gaano kalaki ang itlog ng ostrich?,animal_info
+Is the cassowary dangerous?,animal_info
+Ano ang kinakain ng cassowary?,animal_info
+Facts about the tarictic hornbill,animal_info
+Endangered ba ang hornbill?,animal_info
+What is a Nicobar pigeon?,animal_info
+Why is the peacock's tail so colorful?,animal_info
+Is the Philippine spitting cobra venomous?,animal_info
+Nakakamatay ba ang cobra?,animal_info
+How long can a Burmese python get?,animal_info
+What is an albino python?,animal_info
+Can the sailfin lizard run on water?,animal_info
+How heavy is a sulcata tortoise?,animal_info
+Ilang taon nabubuhay ang sulcata?,animal_info
+Is the Philippine deer endangered?,animal_info
+What does the painted stork eat?,animal_info
+Tell me something cool about the macaque,animal_info
+help my son is missing,emergency
+nawawala ang kapatid ko,emergency
+I can't find my friend,emergency
+Someone collapsed near the aviary,emergency
+may nahulog na bata,emergency
+My daughter scraped her knee,emergency
+Nasugatan ang anak ko,emergency
+I feel dizzy,emergency
+nahihilo ako,emergency
+There's a snake outside its cage!,emergency
+May nakawalang hayop!,emergency
+Someone is bleeding,emergency
+may nasugatan,emergency
+Where can I get a bandage?,emergency
+Saan humingi ng tulong?,emergency
+I was stung by a bee,emergency
+Kinagat ako ng bubuyog,emergency
+My phone was stolen,emergency
+Nanakawan ako ng cellphone,emergency
+Someone is choking,emergency
+There's a fight near the entrance,emergency
+I think I'm having an asthma attack,emergency
+May inaatake ng hika,emergency
+Call a guard now,emergency
+what's happening today,events
+may event ba bukas,events
+When is the next feeding show?,events
+anong oras ang feeding ng tigre,events
+Is there a show this Saturday?,events
+Are there activities for kids this weekend?,events
+May palaro ba para sa bata?,events
+What games can we play at the zoo?,events
+Paano sumali sa scavenger hunt?,events
+How do I earn points?,events
+May leaderboard ba?,events
+When is the conservation talk?,events
+Is there a summer camp?,events
+Kailan ang Kids Zoo Camp?,events
+Are there events on Christmas?,events
+May event ba sa Pasko?,events
+Can I book a guided tour for my class?,events
+What time does the keeper talk start?,events
+Any announcements today?,events
+Anong bago sa zoo?,events
+Is the night safari still happening?,events
+What events are coming up next month?,events
+san pwede mag park ng van,parking
+Is there parking for tourist buses?,parking
+May bayad ba ang parking?,parking
+parking rates please,parking
+How much is parking per hour?,parking
+Is there motorcycle parking?,parking
+Pwede bang mag-park sa labas?,parking
+Is the parking lot open early?,parking
+How do I commute to Manila Zoo?,parking
+Paano mag-commute papunta sa zoo?,parking
+What jeep goes to Manila Zoo?,parking
+Can I take a Grab to the zoo?,parking
+Where should our Grab drop us off?,parking
+Which LRT stop is closest to the zoo?,parking
+Malapit ba ang Quirino station?,parking
+Is there a bike rack?,parking
+Saan pwedeng iparada ang bisikleta?,parking
+Is the parking covered?,parking
+How far is the parking from the gate?,parking
+magkano po entrance,tickets
+how much is entrance for adults,tickets
+ticket price for kids,tickets
+Magkano ang ticket ng estudyante?,tickets
+How much for senior citizens?,tickets
+Is it free for Manila residents?,tickets
+Libre ba sa taga-Maynila?,tickets
+Do I need an ID for the resident rate?,tickets
+Kailangan ba ng ID para sa discount?,tickets
+Can I pay with Maya?,tickets
+Pwede GCash sa entrance?,tickets
+Are tickets cheaper on weekdays?,tickets
+Is there a group discount for schools?,tickets
+Magkano para sa field trip?,tickets
+How much is the ticket for a foreigner?,tickets
+Can I get a refund?,tickets
+Pwede bang i-refund ang ticket?,tickets
+Is my ticket valid all day?,tickets
+Can I go out and come back in with the same ticket?,tickets
+Do teachers get a discount?,tickets
+May libre ba para sa PWD?,tickets
+How much is the total for 2 adults and 2 kids?,tickets
+What time do you close?,zoo_hours
+Hanggang anong oras kayo?,zoo_hours
+Bukas ba sa Lunes?,zoo_hours
+Are you open on holidays?,zoo_hours
+Bukas ba kayo sa Pasko?,zoo_hours
+Anong oras ang last entry?,zoo_hours
+Open ba kayo sa Sunday?,zoo_hours
+Is the zoo open at night?,zoo_hours
+What are your opening hours on weekends?,zoo_hours
+Can I enter at 7 PM?,zoo_hours
+Pwede pa bang pumasok ng alas-sais?,zoo_hours
+When is the best time to visit?,zoo_hours

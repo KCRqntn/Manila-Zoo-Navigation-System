@@ -1,0 +1,37 @@
+Thesis Title:
+Interactive Manila Zoo
+Navigation and Information
+System Integrating Fine-Tuned
+Bert Chatbot and QR Codes
+
+Proponents:
+Raqintan, KC B.
+Rutas, Khem Razel T.
+Radam, Kaycee
+Mercado, Czarina Cassandra V.
+
+Adviser:
+Prof. Erwinaldgeriko Lagda
+
+05/14/2026
+302
+
+Mr. Blusan
+• Care Tech: Transformer
+• Tech: Leaflet is for 3D
+• Reference: Hugging Face Transformer
+• Model: Bert-Based-Multilingual-Cased
+  Multilingual Bert
+  XML-Roberta
+Make it available offline via eaer loading
+
+Mr. Carlos
+• Includes 1so 2500 on objectives
+• Update for map if there is changes
+• Chatbot using BERT stating specific direction to locate specific location
+• Chatbot English/tagalog?-Include on scope/limit
+
+Mr. Rutaquio
+• Must include admin dashboard for editing pin location and updating zoo animal record.
+• Ensure that face traumarcy of chatbot model to be able to give accurate replan to the users
+  inquiries.

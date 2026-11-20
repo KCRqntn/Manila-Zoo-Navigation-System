@@ -1,0 +1,75 @@
+# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# compiled output
+dist
+tmp
+out-tsc
+*.tsbuildinfo
+.expo
+.expo-shared
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+
+# Local caches
+.cache/
+.local/
+
+# Secrets: database URL and Supabase keys must never be committed
+.env
+.env.*
+!.env.example
+!deploy/.env.production.example
+
+# Encrypted system backups (Admin → Backup & Recovery); copy them somewhere safe, never commit them
+backups/encrypted/
+*.mzb
+
+# Trained BERT models and checkpoints (hundreds of MB to GB each; GitHub refuses files over 100 MB).
+# Keep them on Drive / Hugging Face; the training code, data and reports are committed.
+ai-training/models*/
+ai-training/ai-training/
+*.safetensors
+*.pt
+*.bin
+__pycache__/
+*.pyc
+
+# Deployment bundle (rebuilt by the deploy script)
+*.tar.gz
+
+# Full database export: contains visitor profiles, registrations and chat history (personal data)
+ManilaZoo_Datasets.xlsx

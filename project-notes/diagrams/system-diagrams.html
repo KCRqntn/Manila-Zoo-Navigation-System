@@ -1,0 +1,412 @@
+<title>Manila Zoo Navigator System Diagrams</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a field-guide document. One reading column, each diagram on its own "plate" that can scroll sideways. */
+  :root {
+    --bg: #f5f7f2;        /* paper with a leaf-green bias */
+    --surface: #ffffff;
+    --fg: #1d2a22;
+    --muted: #5b6b60;
+    --line: #d5ddd3;
+    --accent: #2f7a4f;    /* zoo green */
+    --accent-soft: #e3f0e6;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111813; --surface: #18221b; --fg: #e4ece5; --muted: #9db0a2; --line: #2c3a30;
+      --accent: #6cc58f; --accent-soft: #1f3326; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111813; --surface: #18221b; --fg: #e4ece5; --muted: #9db0a2; --line: #2c3a30;
+    --accent: #6cc58f; --accent-soft: #1f3326; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); font: 400 1rem/1.6 var(--body);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 2.5rem 4rem;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; display: grid; gap: 2.5rem; }
+  header { display: grid; gap: .6rem; }
+  .eyebrow { font: 500 .75rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  h1 { font: 700 clamp(1.9rem, 4vw, 2.8rem)/1.1 var(--display); margin: 0; text-wrap: balance; }
+  h2 { font: 700 1.55rem/1.2 var(--display); margin: 0; text-wrap: balance; }
+  h3 { font: 600 1.05rem/1.3 var(--display); margin: 0; }
+  p { margin: 0; max-width: 68ch; }
+  .lede { color: var(--muted); font-size: 1.08rem; }
+  nav { display: flex; flex-wrap: wrap; gap: .5rem; }
+  nav a {
+    font: 500 .85rem/1 var(--mono); color: var(--fg); text-decoration: none;
+    border: 1px solid var(--line); background: var(--surface); padding: .55rem .8rem; border-radius: 6px;
+  }
+  nav a:hover, nav a:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+  section { display: grid; gap: 1rem; scroll-margin-top: 1rem; }
+  .plate {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 1rem; overflow-x: auto;
+  }
+  .plate pre.mermaid { margin: 0; min-width: 760px; display: flex; justify-content: center; background: transparent; }
+  .plate.narrow pre.mermaid { min-width: 640px; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .75rem; }
+  .fact { border-top: 2px solid var(--accent); padding-top: .6rem; display: grid; gap: .25rem; min-width: 0; }
+  .fact h3 { font-size: .95rem; }
+  .fact p, .note { font-size: .93rem; color: var(--muted); }
+  code, .mono { font-family: var(--mono); font-size: .86em; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font: 600 .78rem/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+  .pill { display: inline-block; font: 500 .72rem/1 var(--mono); padding: .3rem .45rem; border-radius: 4px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+  footer { color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Manila Zoological &amp; Botanical Garden · Navigation and Information System</span>
+    <h1>System diagrams</h1>
+    <p class="lede">The system's architecture, its database (ERD) and its use cases, drawn from the code and database of the running system as of November 2026.</p>
+    <nav aria-label="Diagrams">
+      <a href="#architecture">Architecture</a>
+      <a href="#erd">ERD</a>
+      <a href="#use-cases">Use cases</a>
+    </nav>
+  </header>
+
+  <!-- ───────────── Architecture ───────────── -->
+  <section id="architecture" aria-labelledby="arch-h">
+    <h2 id="arch-h">System architecture</h2>
+    <p>Visitors and staff use the same website. It talks to one API, which keeps all zoo data in a PostgreSQL database on the zoo laptop, asks a separate AI service to read chatbot questions, and uses Supabase only for sign-in and photo storage.</p>
+    <div class="plate">
+<pre class="mermaid">
+flowchart LR
+  subgraph USERS["Users"]
+    V["Visitor<br/>phone or tablet browser"]
+    S["Zoo staff<br/>admin dashboard"]
+  end
+  subgraph EDGE["Public access"]
+    CF["Cloudflare Tunnel<br/>manilazoonavigationsystem.com"]
+  end
+  subgraph HOST["Zoo laptop · Windows · autostart scripts restart each service"]
+    WEB["Website · React + Vite · port 4173<br/>visitor pages + admin dashboard<br/>Leaflet 2D map · MapLibre 3D map<br/>service worker + offline AI Guide"]
+    API["API · Node.js Express 5 · port 5000<br/>REST routes · role-based access · audit log<br/>walkway routing · map version · migrations"]
+    AI["AI service · Python FastAPI · port 8000<br/>fine-tuned multilingual BERT<br/>12 intents, English + Filipino"]
+    DB[("PostgreSQL<br/>database manila_zoo")]
+  end
+  subgraph CLOUD["Cloud services"]
+    SA["Supabase Auth<br/>accounts, sign-in, roles"]
+    SS["Supabase Storage<br/>animal and facility photos"]
+    OSM["OpenStreetMap<br/>map tiles"]
+  end
+  V --> CF
+  S --> CF
+  CF --> WEB
+  WEB -->|"/api requests"| API
+  WEB -->|"sign in"| SA
+  WEB -->|"tiles"| OSM
+  API -->|"SQL via Drizzle / pg"| DB
+  API -->|"POST /predict"| AI
+  API -->|"verify token, read role"| SA
+  API -->|"upload photos"| SS
+</pre>
+    </div>
+    <div class="facts">
+      <div class="fact"><h3>Website</h3><p>React, TypeScript, Vite, wouter, TanStack Query. 2D map in Leaflet, 3D map in MapLibre GL. A service worker keeps a copy of the map, animals and FAQs for offline use.</p></div>
+      <div class="fact"><h3>API</h3><p>Express 5 with Drizzle ORM. Checks every admin request against the account's role, logs every change in <code>audit_logs</code>, plans routes along the mapped walkways (Dijkstra), and bumps a map version on each map edit.</p></div>
+      <div class="fact"><h3>AI Guide</h3><p>A FastAPI service with a fine-tuned <code>bert-base-multilingual-cased</code> model (92.75% accuracy). Answers come from database lookups; low-confidence questions fall back to keyword rules.</p></div>
+      <div class="fact"><h3>Live map updates</h3><p>Visitor maps poll <code>GET /api/map/version</code> every 30 seconds and reload the places, outlines, walkways and facilities when it changes.</p></div>
+    </div>
+  </section>
+
+  <!-- ───────────── ERD ───────────── -->
+  <section id="erd" aria-labelledby="erd-h">
+    <h2 id="erd-h">Entity relationship diagram</h2>
+    <p>The tables that hold the zoo's data and how they link. Accounts live in Supabase Auth; the database refers to them by their user id.</p>
+    <div class="plate">
+<pre class="mermaid">
+erDiagram
+  SUPABASE_AUTH_USERS ||--o| VISITOR_PROFILES : "visitor account"
+  SUPABASE_AUTH_USERS ||--o| ADMIN_ACCOUNTS : "staff account"
+  CATEGORIES ||--o{ ANIMALS : groups
+  MAP_PINS ||--o{ ANIMALS : "home exhibit"
+  MAP_PINS ||--o{ MAP_FEATURES : "labels outline"
+  MAP_PINS ||--o{ EVENTS : "held at"
+  MAP_PINS ||--o{ QR_CODES : "location code"
+  ANIMALS ||--o{ QR_CODES : "animal code"
+  ANIMALS ||--o{ ANIMAL_GALLERY : photos
+  ANIMALS ||--o{ FAVORITES : "saved by visitors"
+  ANIMALS ||--o{ ANIMAL_FEEDBACK : ratings
+  ANIMALS |o--o{ ANALYTICS : "viewed / scanned"
+  QR_CODES |o--o{ ANALYTICS : scans
+  GAMES ||--o{ GAME_STOPS : stops
+  ANIMALS ||--o{ GAME_STOPS : "is a stop"
+  GAMES ||--o{ GAME_PROGRESS : "visitor progress"
+  QR_CODES |o--o{ POINT_TRANSACTIONS : "earned by scan"
+  REWARDS ||--o{ REWARD_REDEMPTIONS : redeemed
+  REWARD_REDEMPTIONS |o--o{ POINT_TRANSACTIONS : "points spent"
+  VISITOR_PROFILES |o--o{ VISITOR_REGISTRATIONS : "registers visits"
+  VISITOR_REGISTRATIONS ||--o{ VISITOR_GROUP_MEMBERS : "group members"
+  CHAT_HISTORY ||--o{ FEEDBACK : "rated answer"
+  PARK_ZONES ||--o{ ZONE_TREES : trees
+  TICKET_PRICES ||--o{ TICKET_PRICE_HISTORY : "price changes"
+
+  ANIMALS {
+    int id PK
+    text name
+    text scientific_name
+    int category_id FK
+    int location_id FK
+    text habitat
+    text diet
+    text conservation_status
+    text image_url
+  }
+  CATEGORIES {
+    int id PK
+    text name
+  }
+  MAP_PINS {
+    int id PK
+    text name UK
+    text pin_type
+    numeric lat
+    numeric lng
+    text color
+    bool is_active "published"
+    bool show_label
+  }
+  MAP_FEATURES {
+    int id PK
+    text name
+    text feature_type
+    jsonb geometry "polygon"
+    numeric height_m
+    int map_pin_id FK
+    bool is_active "published"
+  }
+  MAP_PATHS {
+    int id PK
+    text name
+    jsonb geometry "walkway line"
+    text kind "walkway or bridge"
+    bool is_open
+    bool is_accessible
+    bool is_active "published"
+  }
+  FACILITIES {
+    int id PK
+    text name UK
+    text type
+    text status
+    float lat
+    float lng
+    bool is_active "published"
+  }
+  QR_CODES {
+    int id PK
+    text code UK
+    int animal_id FK
+    int map_pin_id FK
+    int points
+  }
+  EVENTS {
+    int id PK
+    text title
+    timestamptz start_date
+    timestamptz end_date
+    text status
+    int pin_id FK
+  }
+  VISITOR_PROFILES {
+    uuid user_id PK
+    text full_name
+    text email UK
+    text phone
+    text visitor_code UK
+  }
+  ADMIN_ACCOUNTS {
+    uuid user_id PK
+    text username UK
+    text full_name
+    bool is_active
+  }
+  VISITOR_REGISTRATIONS {
+    uuid id PK
+    uuid user_id FK
+    date visit_date
+    int visit_no
+  }
+  POINT_TRANSACTIONS {
+    bigint id PK
+    text user_id
+    text kind
+    int points
+    int qr_code_id FK
+    int redemption_id FK
+    text claim_key UK
+  }
+  REWARDS {
+    int id PK
+    text name
+    int cost
+    int stock
+  }
+  REWARD_REDEMPTIONS {
+    int id PK
+    int reward_id FK
+    text code UK
+    text status
+  }
+  GAMES {
+    int id PK
+    text title
+    int points_per_stop
+    text status
+  }
+  GAME_STOPS {
+    int id PK
+    int game_id FK
+    int animal_id FK
+  }
+  PARK_ZONES {
+    int id PK
+    text name UK
+    text marker_shape
+    text marker_color
+  }
+  ZONE_TREES {
+    int id PK
+    int zone_id FK
+    text species
+    text status
+  }
+</pre>
+    </div>
+    <h3>Tables that stand on their own</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Group</th><th>Tables</th><th>What they hold</th></tr></thead>
+        <tbody>
+          <tr><td><span class="pill">Map</span></td><td class="mono">map_config, map_layout_meta, map_versions</td><td>Map centre and zoom; the version number visitor maps poll; saved snapshots of the whole map for restore.</td></tr>
+          <tr><td><span class="pill">Chatbot</span></td><td class="mono">chat_history, faq, training_dataset</td><td>Conversations, FAQ answers (English and Filipino), and example questions for training the intent model.</td></tr>
+          <tr><td><span class="pill">Content</span></td><td class="mono">announcements, zoo_updates, ticket_prices</td><td>Notices with publish and expiry dates, zoo news, and admission rates.</td></tr>
+          <tr><td><span class="pill">Admin</span></td><td class="mono">audit_logs, system_settings, backups, form_submissions</td><td>Who changed what and when; editable settings; backup records; visitor form submissions.</td></tr>
+          <tr><td><span class="pill">System</span></td><td class="mono">schema_migrations</td><td>Which database migrations have been applied.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ───────────── Use cases ───────────── -->
+  <section id="use-cases" aria-labelledby="uc-h">
+    <h2 id="uc-h">Use cases</h2>
+    <p>Two kinds of people use the system. Visitors use it without signing in; a visitor account adds visit registration, points and rewards. Staff sign in, and their role decides what they can change.</p>
+
+    <h3>Visitor</h3>
+    <div class="plate narrow">
+<pre class="mermaid">
+flowchart LR
+  G(["Visitor"])
+  R(["Registered visitor"])
+  AIS(["AI service"])
+  subgraph SYS["Manila Zoo Navigation and Information System"]
+    U1(["View the zoo map in 2D or 3D"])
+    U2(["Search places and animals"])
+    U3(["Set my location: GPS, tap the map or scan a QR code"])
+    U4(["Get walking directions, wheelchair-friendly option"])
+    U5(["Find the nearest restroom, food, first aid or exit"])
+    U6(["View an animal's profile and photos"])
+    U7(["Ask the AI Guide in English or Filipino"])
+    U8(["Save the zoo for offline use"])
+    U9(["View events, announcements, hours and ticket prices"])
+    U10(["Rate an animal or a chatbot answer"])
+    U11(["Create an account and register a visit"])
+    U12(["Play a scavenger hunt and earn points"])
+    U13(["Redeem points for rewards"])
+    U14(["Save favourite animals"])
+  end
+  G --> U1
+  G --> U2
+  G --> U3
+  G --> U4
+  G --> U5
+  G --> U6
+  G --> U7
+  G --> U8
+  G --> U9
+  G --> U10
+  G --> U11
+  R --> U12
+  R --> U13
+  R --> U14
+  U7 -.->|"reads the question"| AIS
+  U3 -.->|"includes"| U4
+</pre>
+    </div>
+
+    <h3>Zoo staff</h3>
+    <div class="plate narrow">
+<pre class="mermaid">
+flowchart LR
+  D(["Director"])
+  A(["Admin"])
+  E(["Editor"])
+  VW(["Viewer"])
+  subgraph SYS2["Admin dashboard"]
+    S0(["Sign in with role-based access"])
+    S1(["Manage the map: places, outlines, walkways, bridges, facilities"])
+    S2(["Publish or unpublish map elements"])
+    S3(["Manage animals and photo galleries"])
+    S4(["Manage QR codes and their points"])
+    S5(["Manage events, announcements and FAQs"])
+    S6(["Manage games and rewards"])
+    S7(["Manage park areas and trees"])
+    S8(["Review chatbot training data"])
+    S9(["View the dashboard, analytics and submissions"])
+    S10(["View and export audit logs"])
+    S11(["Back up and restore data"])
+    S12(["Change system settings"])
+    S13(["Manage administrator accounts"])
+  end
+  VW --> S0
+  VW --> S9
+  E --> S1
+  E --> S2
+  E --> S3
+  E --> S4
+  E --> S5
+  E --> S6
+  E --> S7
+  E --> S8
+  A --> S10
+  A --> S11
+  A --> S12
+  D --> S13
+  A -.->|"can do everything an Editor can"| E
+  D -.->|"can do everything an Admin can"| A
+  E -.->|"can do everything a Viewer can"| VW
+</pre>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Role</th><th>What the role can do</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Director</strong></td><td>Everything, including creating, deactivating and resetting administrator accounts.</td></tr>
+          <tr><td><strong>Admin</strong></td><td>Everything except managing administrator accounts: user roles, audit logs, backups and settings, plus all Editor work.</td></tr>
+          <tr><td><strong>Editor</strong></td><td>Animals, events, announcements, FAQs, games, chatbot training data, the map and QR codes; view and update visitor submissions.</td></tr>
+          <tr><td><strong>Viewer</strong></td><td>Read-only: the dashboard, reports, records and submissions.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Drawn from <span class="mono">artifacts/api-server</span>, <span class="mono">artifacts/manila-zoo</span> and <span class="mono">lib/db</span>. The ERD shows each table's key columns, not every column.
+  </footer>
+</div>

@@ -1,0 +1,1898 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: Manila Zoo Navigation and Information System API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+  - name: animals
+  - name: categories
+  - name: locations
+  - name: map
+  - name: qr
+  - name: chatbot
+  - name: favorites
+  - name: analytics
+  - name: users
+  - name: faq
+  - name: reports
+  - name: announcements
+  - name: events
+
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  # ─── Animals ───────────────────────────────────────────────────────────────
+  /animals:
+    get:
+      operationId: searchAnimals
+      tags: [animals]
+      summary: List all animals
+      parameters:
+        - name: category_id
+          in: query
+          schema: { type: ["integer", "null"] }
+        - name: search
+          in: query
+          schema: { type: ["string", "null"] }
+        - name: conservation_status
+          in: query
+          schema: { type: ["string", "null"] }
+        - name: limit
+          in: query
+          schema: { type: ["integer", "null"] }
+        - name: offset
+          in: query
+          schema: { type: ["integer", "null"] }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Animal"
+    post:
+      operationId: createAnimal
+      tags: [animals]
+      summary: Create animal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnimalInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Animal"
+
+  /animals/{id}:
+    get:
+      operationId: getAnimal
+      tags: [animals]
+      summary: Get animal by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Animal"
+        "404":
+          description: Not found
+    patch:
+      operationId: updateAnimal
+      tags: [animals]
+      summary: Update animal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnimalUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Animal"
+    delete:
+      operationId: deleteAnimal
+      tags: [animals]
+      summary: Delete animal
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  /animals/{id}/gallery:
+    get:
+      operationId: getAnimalGallery
+      tags: [animals]
+      summary: Get animal gallery images
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AnimalGalleryItem"
+    post:
+      operationId: addAnimalGalleryItem
+      tags: [animals]
+      summary: Add gallery image
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnimalGalleryInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnimalGalleryItem"
+
+  /animals/{id}/nearby:
+    get:
+      operationId: fetchNearbyAnimals
+      tags: [animals]
+      summary: Get nearby animals
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Animal"
+
+  /animals/featured:
+    get:
+      operationId: getFeaturedAnimals
+      tags: [animals]
+      summary: Get featured/popular animals
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Animal"
+
+  # ─── Categories ────────────────────────────────────────────────────────────
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [categories]
+      summary: List animal categories
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Category"
+    post:
+      operationId: createCategory
+      tags: [categories]
+      summary: Create category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+
+  /categories/{id}:
+    patch:
+      operationId: updateCategory
+      tags: [categories]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+    delete:
+      operationId: deleteCategory
+      tags: [categories]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── Map Pins ───────────────────────────────────────────────────────────────
+  /map/pins:
+    get:
+      operationId: listMapPins
+      tags: [map]
+      summary: List all map pins
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MapPin"
+    post:
+      operationId: createMapPin
+      tags: [map]
+      summary: Create map pin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapPinInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapPin"
+
+  /map/pins/{id}:
+    get:
+      operationId: getMapPin
+      tags: [map]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapPin"
+    patch:
+      operationId: updateMapPin
+      tags: [map]
+      summary: Update map pin (drag/rename)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapPinUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapPin"
+    delete:
+      operationId: deleteMapPin
+      tags: [map]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  /map/config:
+    get:
+      operationId: getMapConfig
+      tags: [map]
+      summary: Get current map image and config
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapConfig"
+    patch:
+      operationId: updateMapConfig
+      tags: [map]
+      summary: Update map config (upload new image URL)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapConfigUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapConfig"
+
+  /map/layout:
+    get:
+      operationId: getMapLayout
+      tags: [map]
+      summary: Get 2.5D features and walkways with the current layout version
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapLayout"
+
+  /map/version:
+    get:
+      operationId: getMapVersion
+      tags: [map]
+      summary: Cheap check of the layout version; bumps on every map change
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapLayoutVersion"
+
+  /map/route:
+    get:
+      operationId: getMapRoute
+      tags: [map]
+      summary: Walking directions between two pins over the open walkways
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema: { type: integer }
+        - name: to
+          in: query
+          required: true
+          schema: { type: integer }
+        - name: accessible
+          in: query
+          schema: { type: boolean }
+        - name: lang
+          in: query
+          schema: { type: string, enum: [en, fil] }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapRoute"
+        "404":
+          description: Start or destination pin not found
+
+  /map/features:
+    post:
+      operationId: createMapFeature
+      tags: [map]
+      summary: Create an enclosure/building footprint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapFeatureInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapFeature"
+
+  /map/features/{id}:
+    patch:
+      operationId: updateMapFeature
+      tags: [map]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapFeatureUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapFeature"
+    delete:
+      operationId: deleteMapFeature
+      tags: [map]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  /map/paths:
+    post:
+      operationId: createMapPath
+      tags: [map]
+      summary: Create a walkway
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapPathInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapPath"
+
+  /map/paths/{id}:
+    patch:
+      operationId: updateMapPath
+      tags: [map]
+      summary: Update a walkway (e.g. close/reopen)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MapPathUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MapPath"
+    delete:
+      operationId: deleteMapPath
+      tags: [map]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── QR Codes ───────────────────────────────────────────────────────────────
+  /qr:
+    get:
+      operationId: listQrCodes
+      tags: [qr]
+      summary: List all QR codes
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/QrCode"
+    post:
+      operationId: generateQrCode
+      tags: [qr]
+      summary: Generate QR code for an animal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QrCodeInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QrCode"
+
+  /qr/{id}:
+    get:
+      operationId: getQrCode
+      tags: [qr]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QrCode"
+    delete:
+      operationId: deleteQrCode
+      tags: [qr]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  /qr/scan/{code}:
+    get:
+      operationId: scanQrCode
+      tags: [qr]
+      summary: Resolve a scanned QR code to animal data
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QrScanResult"
+        "404":
+          description: QR code not found
+
+  # ─── Chatbot ────────────────────────────────────────────────────────────────
+  /chat:
+    post:
+      operationId: sendChatMessage
+      tags: [chatbot]
+      summary: Send message to chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatMessageInput"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatResponse"
+
+  /chat/history:
+    get:
+      operationId: fetchChatHistory
+      tags: [chatbot]
+      summary: Get chat history for current session
+      parameters:
+        - name: session_id
+          in: query
+          schema: { type: ["string", "null"] }
+        - name: limit
+          in: query
+          schema: { type: ["integer", "null"] }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChatHistory"
+
+  /chat/feedback:
+    post:
+      operationId: submitChatFeedback
+      tags: [chatbot]
+      summary: Submit feedback on chat response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChatFeedbackInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatFeedback"
+
+  # ─── FAQ ────────────────────────────────────────────────────────────────────
+  /faq:
+    get:
+      operationId: searchFaqs
+      tags: [faq]
+      summary: List FAQs
+      parameters:
+        - name: category
+          in: query
+          schema: { type: ["string", "null"] }
+        - name: language
+          in: query
+          schema: { type: ["string", "null"] }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Faq"
+    post:
+      operationId: createFaq
+      tags: [faq]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FaqInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Faq"
+
+  /faq/{id}:
+    patch:
+      operationId: updateFaq
+      tags: [faq]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FaqUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Faq"
+    delete:
+      operationId: deleteFaq
+      tags: [faq]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── Favorites ─────────────────────────────────────────────────────────────
+  /favorites:
+    get:
+      operationId: listFavorites
+      tags: [favorites]
+      summary: List user favorites
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Favorite"
+    post:
+      operationId: addFavorite
+      tags: [favorites]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FavoriteInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Favorite"
+
+  /favorites/{id}:
+    delete:
+      operationId: removeFavorite
+      tags: [favorites]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── Analytics / Reports ───────────────────────────────────────────────────
+  /analytics/track:
+    post:
+      operationId: trackAnalyticsEvent
+      tags: [analytics]
+      summary: Track visitor event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnalyticsEventInput"
+      responses:
+        "201":
+          description: Tracked
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnalyticsEvent"
+
+  /reports/dashboard:
+    get:
+      operationId: getDashboardStats
+      tags: [reports]
+      summary: Get admin dashboard statistics
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+
+  /reports/popular-animals:
+    get:
+      operationId: fetchPopularAnimals
+      tags: [reports]
+      summary: Most viewed animals
+      parameters:
+        - name: limit
+          in: query
+          schema: { type: ["integer", "null"] }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PopularAnimalStat"
+
+  /reports/chatbot:
+    get:
+      operationId: getChatbotStats
+      tags: [reports]
+      summary: Chatbot usage analytics
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChatbotStats"
+
+  /reports/qr-scans:
+    get:
+      operationId: getQrScanStats
+      tags: [reports]
+      summary: QR scan analytics
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/QrScanStat"
+
+  # ─── Users ─────────────────────────────────────────────────────────────────
+  /users:
+    get:
+      operationId: listUsers
+      tags: [users]
+      summary: List users (admin only)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/UserProfile"
+
+  /users/{id}:
+    get:
+      operationId: getUser
+      tags: [users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+    patch:
+      operationId: updateUser
+      tags: [users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserProfileUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+    delete:
+      operationId: deleteUser
+      tags: [users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── Announcements ─────────────────────────────────────────────────────────
+  /announcements:
+    get:
+      operationId: listAnnouncements
+      tags: [announcements]
+      summary: List active announcements
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Announcement"
+    post:
+      operationId: createAnnouncement
+      tags: [announcements]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnnouncementInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Announcement"
+
+  /announcements/{id}:
+    patch:
+      operationId: updateAnnouncement
+      tags: [announcements]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnnouncementUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Announcement"
+    delete:
+      operationId: deleteAnnouncement
+      tags: [announcements]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── Events ────────────────────────────────────────────────────────────────
+  /events:
+    get:
+      operationId: listEvents
+      tags: [events]
+      summary: List zoo events
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ZooEvent"
+    post:
+      operationId: createEvent
+      tags: [events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ZooEventInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ZooEvent"
+
+  /events/{id}:
+    patch:
+      operationId: updateEvent
+      tags: [events]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ZooEventUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ZooEvent"
+    delete:
+      operationId: deleteEvent
+      tags: [events]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  # ─── Training Dataset ───────────────────────────────────────────────────────
+  /training/dataset:
+    get:
+      operationId: listTrainingData
+      tags: [chatbot]
+      summary: List chatbot training dataset entries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TrainingDataItem"
+    post:
+      operationId: addTrainingData
+      tags: [chatbot]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrainingDataInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrainingDataItem"
+
+  /training/dataset/{id}:
+    patch:
+      operationId: updateTrainingData
+      tags: [chatbot]
+      summary: Approve an example for the next retraining, or correct its intent
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TrainingDataUpdate"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrainingDataItem"
+    delete:
+      operationId: deleteTrainingData
+      tags: [chatbot]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "204":
+          description: Deleted
+
+  /training/model-status:
+    get:
+      operationId: getModelStatus
+      tags: [chatbot]
+      summary: Accuracy of the running intent model and admin training examples waiting for retraining
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModelStatus"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      required: [status]
+      properties:
+        status: { type: string }
+
+    # ── Animal ────────────────────────────────────────────────────────────────
+    Animal:
+      type: object
+      required: [id, name, created_at]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        scientific_name: { type: ["string", "null"] }
+        common_name: { type: ["string", "null"] }
+        category_id: { type: ["integer", "null"] }
+        category_name: { type: ["string", "null"] }
+        kingdom: { type: ["string", "null"] }
+        phylum: { type: ["string", "null"] }
+        class: { type: ["string", "null"] }
+        order: { type: ["string", "null"] }
+        family: { type: ["string", "null"] }
+        genus: { type: ["string", "null"] }
+        species: { type: ["string", "null"] }
+        habitat: { type: ["string", "null"] }
+        diet: { type: ["string", "null"] }
+        weight_kg: { type: ["number", "null"] }
+        height_cm: { type: ["number", "null"] }
+        lifespan_years: { type: ["integer", "null"] }
+        conservation_status: { type: ["string", "null"] }
+        description: { type: ["string", "null"] }
+        interesting_facts: { type: ["string", "null"] }
+        feeding_schedule: { type: ["string", "null"] }
+        image_url: { type: ["string", "null"] }
+        location_id: { type: ["integer", "null"] }
+        location_name: { type: ["string", "null"] }
+        is_featured: { type: boolean }
+        view_count: { type: integer }
+        created_at: { type: string }
+        updated_at: { type: ["string", "null"] }
+
+    AnimalInput:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string, minLength: 1 }
+        scientific_name: { type: ["string", "null"] }
+        common_name: { type: ["string", "null"] }
+        category_id: { type: ["integer", "null"] }
+        kingdom: { type: ["string", "null"] }
+        phylum: { type: ["string", "null"] }
+        class: { type: ["string", "null"] }
+        order: { type: ["string", "null"] }
+        family: { type: ["string", "null"] }
+        genus: { type: ["string", "null"] }
+        species: { type: ["string", "null"] }
+        habitat: { type: ["string", "null"] }
+        diet: { type: ["string", "null"] }
+        weight_kg: { type: ["number", "null"] }
+        height_cm: { type: ["number", "null"] }
+        lifespan_years: { type: ["integer", "null"] }
+        conservation_status: { type: ["string", "null"] }
+        description: { type: ["string", "null"] }
+        interesting_facts: { type: ["string", "null"] }
+        feeding_schedule: { type: ["string", "null"] }
+        image_url: { type: ["string", "null"] }
+        location_id: { type: ["integer", "null"] }
+        is_featured: { type: ["boolean", "null"] }
+
+    AnimalUpdate:
+      type: object
+      properties:
+        name: { type: ["string", "null"] }
+        scientific_name: { type: ["string", "null"] }
+        common_name: { type: ["string", "null"] }
+        category_id: { type: ["integer", "null"] }
+        kingdom: { type: ["string", "null"] }
+        phylum: { type: ["string", "null"] }
+        class: { type: ["string", "null"] }
+        order: { type: ["string", "null"] }
+        family: { type: ["string", "null"] }
+        genus: { type: ["string", "null"] }
+        species: { type: ["string", "null"] }
+        habitat: { type: ["string", "null"] }
+        diet: { type: ["string", "null"] }
+        weight_kg: { type: ["number", "null"] }
+        height_cm: { type: ["number", "null"] }
+        lifespan_years: { type: ["integer", "null"] }
+        conservation_status: { type: ["string", "null"] }
+        description: { type: ["string", "null"] }
+        interesting_facts: { type: ["string", "null"] }
+        feeding_schedule: { type: ["string", "null"] }
+        image_url: { type: ["string", "null"] }
+        location_id: { type: ["integer", "null"] }
+        is_featured: { type: ["boolean", "null"] }
+
+    AnimalGalleryItem:
+      type: object
+      required: [id, animal_id, image_url, created_at]
+      properties:
+        id: { type: integer }
+        animal_id: { type: integer }
+        image_url: { type: string }
+        caption: { type: ["string", "null"] }
+        sort_order: { type: integer }
+        created_at: { type: string }
+
+    AnimalGalleryInput:
+      type: object
+      required: [image_url]
+      properties:
+        image_url: { type: string }
+        caption: { type: ["string", "null"] }
+        sort_order: { type: ["integer", "null"] }
+
+    # ── Category ──────────────────────────────────────────────────────────────
+    Category:
+      type: object
+      required: [id, name]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        description: { type: ["string", "null"] }
+        icon: { type: ["string", "null"] }
+        color: { type: ["string", "null"] }
+        animal_count: { type: integer }
+
+    CategoryInput:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string, minLength: 1 }
+        description: { type: ["string", "null"] }
+        icon: { type: ["string", "null"] }
+        color: { type: ["string", "null"] }
+
+    CategoryUpdate:
+      type: object
+      properties:
+        name: { type: ["string", "null"] }
+        description: { type: ["string", "null"] }
+        icon: { type: ["string", "null"] }
+        color: { type: ["string", "null"] }
+
+    # ── Map ────────────────────────────────────────────────────────────────────
+    MapPin:
+      type: object
+      required: [id, name, pin_type, lat, lng, created_at]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        pin_type: { type: string }
+        lat: { type: number }
+        lng: { type: number }
+        animal_id: { type: ["integer", "null"] }
+        animal_name: { type: ["string", "null"] }
+        description: { type: ["string", "null"] }
+        color: { type: ["string", "null"] }
+        icon: { type: ["string", "null"] }
+        is_active: { type: boolean }
+        created_at: { type: string }
+        updated_at: { type: ["string", "null"] }
+
+    MapPinInput:
+      type: object
+      required: [name, pin_type, lat, lng]
+      properties:
+        name: { type: string, minLength: 1 }
+        pin_type: { type: string }
+        lat: { type: number }
+        lng: { type: number }
+        animal_id: { type: ["integer", "null"] }
+        description: { type: ["string", "null"] }
+        color: { type: ["string", "null"] }
+        icon: { type: ["string", "null"] }
+
+    MapPinUpdate:
+      type: object
+      properties:
+        name: { type: ["string", "null"] }
+        pin_type: { type: ["string", "null"] }
+        lat: { type: ["number", "null"] }
+        lng: { type: ["number", "null"] }
+        animal_id: { type: ["integer", "null"] }
+        description: { type: ["string", "null"] }
+        color: { type: ["string", "null"] }
+        icon: { type: ["string", "null"] }
+        is_active: { type: ["boolean", "null"] }
+
+    MapConfig:
+      type: object
+      required: [id, map_image_url, center_lat, center_lng, default_zoom]
+      properties:
+        id: { type: integer }
+        map_image_url: { type: string }
+        center_lat: { type: number }
+        center_lng: { type: number }
+        default_zoom: { type: integer }
+        sw_lat: { type: ["number", "null"] }
+        sw_lng: { type: ["number", "null"] }
+        ne_lat: { type: ["number", "null"] }
+        ne_lng: { type: ["number", "null"] }
+        updated_at: { type: ["string", "null"] }
+
+    MapConfigUpdate:
+      type: object
+      properties:
+        map_image_url: { type: ["string", "null"] }
+        center_lat: { type: ["number", "null"] }
+        center_lng: { type: ["number", "null"] }
+        default_zoom: { type: ["integer", "null"] }
+        sw_lat: { type: ["number", "null"] }
+        sw_lng: { type: ["number", "null"] }
+        ne_lat: { type: ["number", "null"] }
+        ne_lng: { type: ["number", "null"] }
+
+    # ── Map layout (2.5D features + walkways) ─────────────────────────────────
+    PolygonGeometry:
+      type: object
+      description: GeoJSON Polygon; coordinates are [lng, lat]
+      required: [type, coordinates]
+      properties:
+        type: { type: string, enum: [Polygon] }
+        coordinates:
+          type: array
+          minItems: 1
+          items:
+            type: array
+            minItems: 4
+            items:
+              type: array
+              minItems: 2
+              items: { type: number }
+
+    LineStringGeometry:
+      type: object
+      description: GeoJSON LineString; coordinates are [lng, lat]
+      required: [type, coordinates]
+      properties:
+        type: { type: string, enum: [LineString] }
+        coordinates:
+          type: array
+          minItems: 2
+          items:
+            type: array
+            minItems: 2
+            items: { type: number }
+
+    MapFeature:
+      type: object
+      required: [id, name, feature_type, geometry, height_m, min_height_m, is_active]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        feature_type: { type: string }
+        geometry: { $ref: "#/components/schemas/PolygonGeometry" }
+        height_m: { type: number }
+        min_height_m: { type: number }
+        wall_color: { type: ["string", "null"] }
+        roof_color: { type: ["string", "null"] }
+        map_pin_id: { type: ["integer", "null"] }
+        is_active: { type: boolean }
+        updated_at: { type: ["string", "null"] }
+
+    MapFeatureInput:
+      type: object
+      required: [name, feature_type, geometry]
+      properties:
+        name: { type: string, minLength: 1 }
+        feature_type: { type: string, enum: [enclosure, building, facility, water, landscape] }
+        geometry: { $ref: "#/components/schemas/PolygonGeometry" }
+        height_m: { type: number, minimum: 0, maximum: 100 }
+        min_height_m: { type: number, minimum: 0, maximum: 100 }
+        wall_color: { type: ["string", "null"] }
+        roof_color: { type: ["string", "null"] }
+        map_pin_id: { type: ["integer", "null"] }
+
+    MapFeatureUpdate:
+      type: object
+      properties:
+        name: { type: ["string", "null"] }
+        feature_type: { type: ["string", "null"], enum: [enclosure, building, facility, water, landscape, null] }
+        geometry: { $ref: "#/components/schemas/PolygonGeometry" }
+        height_m: { type: ["number", "null"], minimum: 0, maximum: 100 }
+        min_height_m: { type: ["number", "null"], minimum: 0, maximum: 100 }
+        wall_color: { type: ["string", "null"] }
+        roof_color: { type: ["string", "null"] }
+        map_pin_id: { type: ["integer", "null"] }
+        is_active: { type: ["boolean", "null"] }
+
+    MapPath:
+      type: object
+      required: [id, geometry, is_open, is_accessible]
+      properties:
+        id: { type: integer }
+        name: { type: ["string", "null"] }
+        geometry: { $ref: "#/components/schemas/LineStringGeometry" }
+        is_open: { type: boolean }
+        is_accessible: { type: boolean }
+        is_active: { type: boolean, description: "Published: unpublished walkways are shown to staff only and never routed along" }
+        kind: { type: string, enum: [walkway, bridge] }
+        updated_at: { type: ["string", "null"] }
+
+    MapPathInput:
+      type: object
+      required: [geometry]
+      properties:
+        name: { type: ["string", "null"] }
+        geometry: { $ref: "#/components/schemas/LineStringGeometry" }
+        is_accessible: { type: boolean }
+        is_active: { type: boolean }
+        kind: { type: string, enum: [walkway, bridge] }
+
+    MapPathUpdate:
+      type: object
+      properties:
+        name: { type: ["string", "null"] }
+        geometry: { $ref: "#/components/schemas/LineStringGeometry" }
+        is_open: { type: ["boolean", "null"] }
+        is_accessible: { type: ["boolean", "null"] }
+        is_active: { type: ["boolean", "null"] }
+        kind: { type: ["string", "null"], enum: [walkway, bridge, null] }
+
+    MapLayout:
+      type: object
+      required: [version, features, paths]
+      properties:
+        version: { type: integer }
+        features:
+          type: array
+          items: { $ref: "#/components/schemas/MapFeature" }
+        paths:
+          type: array
+          items: { $ref: "#/components/schemas/MapPath" }
+
+    MapRoute:
+      type: object
+      required: [from_pin_id, from_name, to_pin_id, to_name, distance_m, walk_minutes, accessible_only, on_paths, steps, coordinates]
+      properties:
+        from_pin_id: { type: integer }
+        from_name: { type: string }
+        to_pin_id: { type: integer }
+        to_name: { type: string }
+        distance_m: { type: integer }
+        walk_minutes: { type: integer }
+        accessible_only: { type: boolean }
+        on_paths: { type: boolean, description: "false when no walkway connects the places and only a straight-line hint is given" }
+        steps:
+          type: array
+          items: { type: string }
+        coordinates:
+          type: array
+          description: "[lat, lng] points from start to destination"
+          items:
+            type: array
+            items: { type: number }
+
+    MapLayoutVersion:
+      type: object
+      required: [version]
+      properties:
+        version: { type: integer }
+        updated_at: { type: ["string", "null"] }
+
+    # ── QR Code ───────────────────────────────────────────────────────────────
+    QrCode:
+      type: object
+      required: [id, code, animal_id, qr_image_url, created_at]
+      properties:
+        id: { type: integer }
+        code: { type: string }
+        animal_id: { type: integer }
+        animal_name: { type: ["string", "null"] }
+        qr_image_url: { type: string }
+        scan_count: { type: integer }
+        is_active: { type: boolean }
+        created_at: { type: string }
+
+    QrCodeInput:
+      type: object
+      required: [animal_id]
+      properties:
+        animal_id: { type: integer }
+
+    QrScanResult:
+      type: object
+      required: [animal, qr_code]
+      properties:
+        animal:
+          $ref: "#/components/schemas/Animal"
+        qr_code:
+          $ref: "#/components/schemas/QrCode"
+        nearby_animals:
+          type: array
+          items:
+            $ref: "#/components/schemas/Animal"
+
+    # ── Chat ──────────────────────────────────────────────────────────────────
+    ChatMessageInput:
+      type: object
+      required: [message]
+      properties:
+        message: { type: string, minLength: 1 }
+        session_id: { type: ["string", "null"] }
+        language: { type: ["string", "null"] }
+        context_animal_id: { type: ["integer", "null"] }
+
+    ChatResponse:
+      type: object
+      required: [reply, session_id]
+      properties:
+        reply: { type: string }
+        session_id: { type: string }
+        intent: { type: ["string", "null"] }
+        confidence: { type: ["number", "null"] }
+        related_animals:
+          type: array
+          items:
+            $ref: "#/components/schemas/Animal"
+        related_locations:
+          type: array
+          items:
+            $ref: "#/components/schemas/MapPin"
+        language_detected: { type: ["string", "null"] }
+        route: { $ref: "#/components/schemas/MapRoute" }
+
+    ChatHistory:
+      type: object
+      required: [id, session_id, role, message, created_at]
+      properties:
+        id: { type: integer }
+        session_id: { type: string }
+        role: { type: string }
+        message: { type: string }
+        intent: { type: ["string", "null"] }
+        confidence: { type: ["number", "null"] }
+        created_at: { type: string }
+
+    ChatFeedbackInput:
+      type: object
+      required: [chat_history_id, rating]
+      properties:
+        chat_history_id: { type: integer }
+        rating: { type: integer }
+        comment: { type: ["string", "null"] }
+
+    ChatFeedback:
+      type: object
+      required: [id, chat_history_id, rating, created_at]
+      properties:
+        id: { type: integer }
+        chat_history_id: { type: integer }
+        rating: { type: integer }
+        comment: { type: ["string", "null"] }
+        created_at: { type: string }
+
+    # ── FAQ ────────────────────────────────────────────────────────────────────
+    Faq:
+      type: object
+      required: [id, question, answer, language, created_at]
+      properties:
+        id: { type: integer }
+        question: { type: string }
+        answer: { type: string }
+        category: { type: ["string", "null"] }
+        language: { type: string }
+        is_active: { type: boolean }
+        created_at: { type: string }
+
+    FaqInput:
+      type: object
+      required: [question, answer]
+      properties:
+        question: { type: string, minLength: 1 }
+        answer: { type: string, minLength: 1 }
+        category: { type: ["string", "null"] }
+        language: { type: string }
+
+    FaqUpdate:
+      type: object
+      properties:
+        question: { type: ["string", "null"] }
+        answer: { type: ["string", "null"] }
+        category: { type: ["string", "null"] }
+        language: { type: ["string", "null"] }
+        is_active: { type: ["boolean", "null"] }
+
+    # ── Favorites ─────────────────────────────────────────────────────────────
+    Favorite:
+      type: object
+      required: [id, animal_id, user_id, created_at]
+      properties:
+        id: { type: integer }
+        animal_id: { type: integer }
+        user_id: { type: string }
+        animal:
+          $ref: "#/components/schemas/Animal"
+        created_at: { type: string }
+
+    FavoriteInput:
+      type: object
+      required: [animal_id]
+      properties:
+        animal_id: { type: integer }
+
+    # ── Analytics ─────────────────────────────────────────────────────────────
+    AnalyticsEventInput:
+      type: object
+      required: [event_type]
+      properties:
+        event_type: { type: string }
+        animal_id: { type: ["integer", "null"] }
+        map_pin_id: { type: ["integer", "null"] }
+        qr_code_id: { type: ["integer", "null"] }
+        metadata: { type: ["string", "null"] }
+        session_id: { type: ["string", "null"] }
+
+    AnalyticsEvent:
+      type: object
+      required: [id, event_type, created_at]
+      properties:
+        id: { type: integer }
+        event_type: { type: string }
+        animal_id: { type: ["integer", "null"] }
+        map_pin_id: { type: ["integer", "null"] }
+        qr_code_id: { type: ["integer", "null"] }
+        metadata: { type: ["string", "null"] }
+        session_id: { type: ["string", "null"] }
+        created_at: { type: string }
+
+    DashboardStats:
+      type: object
+      required: [total_animals, total_users, total_qr_scans, total_chat_messages, total_visitors_today]
+      properties:
+        total_animals: { type: integer }
+        total_users: { type: integer }
+        total_qr_scans: { type: integer }
+        total_chat_messages: { type: integer }
+        total_visitors_today: { type: integer }
+        total_favorites: { type: integer }
+        total_map_pins: { type: integer }
+        chatbot_accuracy: { type: ["number", "null"] }
+
+    PopularAnimalStat:
+      type: object
+      required: [animal_id, animal_name, view_count]
+      properties:
+        animal_id: { type: integer }
+        animal_name: { type: string }
+        image_url: { type: ["string", "null"] }
+        view_count: { type: integer }
+        qr_scan_count: { type: integer }
+
+    ChatbotStats:
+      type: object
+      required: [total_messages, avg_confidence, top_intents]
+      properties:
+        total_messages: { type: integer }
+        avg_confidence: { type: number }
+        top_intents:
+          type: array
+          items:
+            $ref: "#/components/schemas/IntentStat"
+        messages_today: { type: integer }
+        positive_feedback_pct: { type: ["number", "null"] }
+
+    IntentStat:
+      type: object
+      required: [intent, count]
+      properties:
+        intent: { type: string }
+        count: { type: integer }
+
+    QrScanStat:
+      type: object
+      required: [animal_id, animal_name, scan_count]
+      properties:
+        animal_id: { type: integer }
+        animal_name: { type: string }
+        scan_count: { type: integer }
+
+    # ── User Profile ──────────────────────────────────────────────────────────
+    UserProfile:
+      type: object
+      required: [id, email, role, created_at]
+      properties:
+        id: { type: string }
+        email: { type: string }
+        full_name: { type: ["string", "null"] }
+        avatar_url: { type: ["string", "null"] }
+        role: { type: string }
+        is_active: { type: boolean }
+        created_at: { type: string }
+        last_login: { type: ["string", "null"] }
+
+    UserProfileUpdate:
+      type: object
+      properties:
+        full_name: { type: ["string", "null"] }
+        avatar_url: { type: ["string", "null"] }
+        role: { type: ["string", "null"] }
+        is_active: { type: ["boolean", "null"] }
+
+    # ── Announcement ──────────────────────────────────────────────────────────
+    Announcement:
+      type: object
+      required: [id, title, message, is_active, created_at]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        message: { type: string }
+        type: { type: ["string", "null"] }
+        is_active: { type: boolean }
+        expires_at: { type: ["string", "null"] }
+        created_at: { type: string }
+
+    AnnouncementInput:
+      type: object
+      required: [title, message]
+      properties:
+        title: { type: string, minLength: 1 }
+        message: { type: string, minLength: 1 }
+        type: { type: ["string", "null"] }
+        expires_at: { type: ["string", "null"] }
+
+    AnnouncementUpdate:
+      type: object
+      properties:
+        title: { type: ["string", "null"] }
+        message: { type: ["string", "null"] }
+        type: { type: ["string", "null"] }
+        is_active: { type: ["boolean", "null"] }
+        expires_at: { type: ["string", "null"] }
+
+    # ── Event ─────────────────────────────────────────────────────────────────
+    ZooEvent:
+      type: object
+      required: [id, title, start_date, created_at]
+      properties:
+        id: { type: integer }
+        title: { type: string }
+        description: { type: ["string", "null"] }
+        start_date: { type: string }
+        end_date: { type: ["string", "null"] }
+        location: { type: ["string", "null"] }
+        image_url: { type: ["string", "null"] }
+        is_active: { type: boolean }
+        created_at: { type: string }
+
+    ZooEventInput:
+      type: object
+      required: [title, start_date]
+      properties:
+        title: { type: string, minLength: 1 }
+        description: { type: ["string", "null"] }
+        start_date: { type: string }
+        end_date: { type: ["string", "null"] }
+        location: { type: ["string", "null"] }
+        image_url: { type: ["string", "null"] }
+
+    ZooEventUpdate:
+      type: object
+      properties:
+        title: { type: ["string", "null"] }
+        description: { type: ["string", "null"] }
+        start_date: { type: ["string", "null"] }
+        end_date: { type: ["string", "null"] }
+        location: { type: ["string", "null"] }
+        image_url: { type: ["string", "null"] }
+        is_active: { type: ["boolean", "null"] }
+
+    # ── Training Data ─────────────────────────────────────────────────────────
+    TrainingDataItem:
+      type: object
+      required: [id, intent, question, answer, language, created_at]
+      properties:
+        id: { type: integer }
+        intent: { type: string }
+        question: { type: string }
+        answer: { type: string }
+        language: { type: string }
+        is_validated: { type: boolean }
+        created_at: { type: string }
+
+    TrainingDataUpdate:
+      type: object
+      properties:
+        intent: { type: ["string", "null"] }
+        is_validated: { type: ["boolean", "null"] }
+
+    ModelStatus:
+      type: object
+      required: [service_online, model_available, intents, approved_examples, pending_examples]
+      properties:
+        service_online: { type: boolean, description: "Whether the BERT service (ai-training/predict_api.py) answered" }
+        model_available: { type: boolean }
+        base_model: { type: ["string", "null"] }
+        trained_at: { type: ["string", "null"] }
+        train_size: { type: ["integer", "null"] }
+        admin_examples_used: { type: ["integer", "null"] }
+        test_size: { type: ["integer", "null"] }
+        accuracy: { type: ["number", "null"] }
+        macro_f1: { type: ["number", "null"] }
+        keyword_accuracy: { type: ["number", "null"] }
+        intents:
+          type: array
+          items: { type: string }
+        approved_examples: { type: integer, description: "Admin examples approved for the next retraining" }
+        pending_examples: { type: integer, description: "Admin examples waiting for review" }
+
+    TrainingDataInput:
+      type: object
+      required: [intent, question, answer]
+      properties:
+        intent: { type: string, minLength: 1 }
+        question: { type: string, minLength: 1 }
+        answer: { type: string, minLength: 1 }
+        language: { type: string }

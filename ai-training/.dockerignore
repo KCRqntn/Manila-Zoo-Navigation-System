@@ -1,0 +1,8 @@
+# The AI image needs only the API script and the live model; everything else here
+# (old models, backups, training data, logs) is many gigabytes and stays out
+*
+!predict_api.py
+!models
+!models/**
+models/checkpoint-*
+models/_run

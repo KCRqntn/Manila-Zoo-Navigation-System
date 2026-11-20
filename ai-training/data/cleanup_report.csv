@@ -1,0 +1,196 @@
+file,action,intent,text,reason
+train.csv,flagged (kept),animal_info,What animals are native to the Philippines?,"General question, not specific to the zoo's own animals"
+train.csv,removed,tickets,Can I buy tickets online?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Pwede bang online bumili ng ticket?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Can I buy the tickets online or sa entrance lang?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Do you accept GCash for tickets?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Pwede bang cash lang pambayad?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Is there a family package?,Service or policy the system has no verified information on
+train.csv,flagged (kept),tickets,What is the price for foreigners?,Foreigners are assumed to pay the non-Manila-resident rate; confirm with the zoo
+train.csv,removed,facilities,May water refilling station ba?,Service or policy the system has no verified information on
+train.csv,flagged (kept),facilities,Do you have wheelchairs available?,Wheelchairs are only confirmed by an FAQ answer (available at the entrance)
+train.csv,removed,facilities,Is there a stroller rental?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Where can we sit and rest?,Service or policy the system has no verified information on
+train.csv,removed,facilities,May lockers ba kayo?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Is there a breastfeeding room?,Service or policy the system has no verified information on
+train.csv,removed,facilities,May picnic area ba dito?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Where can I charge my phone?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Is there a snack bar near the aviary?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Where can I buy ice cream?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Is there a prayer room?,Service or policy the system has no verified information on
+train.csv,flagged (kept),parking,How much is the parking fee?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Magkano ang parking?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Is parking free?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Libre ba ang parking?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,removed,out_of_scope,How do I get to Manila Zoo by jeep?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Paano pumunta sa Manila Zoo mula sa LRT?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Which LRT station is nearest?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,flagged (kept),parking,Is there a drop-off point?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Saan pwedeng ibaba ang pasahero?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,How many parking slots are there?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Is the parking area safe?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Pwede bang mag-overnight park?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),events,What time is the animal feeding?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+train.csv,flagged (kept),events,Anong oras ang pagpapakain sa mga hayop?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+train.csv,flagged (kept),events,When is the lion feeding?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+train.csv,flagged (kept),events,Anong oras ang feeding ng buwaya?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+train.csv,removed,events,Is there a feeding show for the birds?,Service or policy the system has no verified information on
+train.csv,removed,events,When is the next zoo tour?,Service or policy the system has no verified information on
+train.csv,removed,events,May guided tour ba?,Service or policy the system has no verified information on
+train.csv,removed,events,Can we join the keeper talk?,Service or policy the system has no verified information on
+train.csv,flagged (kept),events,What time is the crocodile feeding?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+train.csv,removed,events,Are there workshops for students?,Service or policy the system has no verified information on
+train.csv,removed,general,Can I take pictures?,Service or policy the system has no verified information on
+train.csv,removed,general,Pwede bang mag-picture?,Service or policy the system has no verified information on
+train.csv,removed,general,Is flash photography allowed?,Service or policy the system has no verified information on
+train.csv,removed,general,Can I use a drone?,Service or policy the system has no verified information on
+train.csv,removed,general,Is there Wi-Fi?,Service or policy the system has no verified information on
+train.csv,removed,general,May wifi ba dito?,Service or policy the system has no verified information on
+train.csv,flagged (kept),general,What is the history of Manila Zoo?,The system has no verified history of the zoo yet; add it to the FAQ
+train.csv,flagged (kept),general,Kailan itinayo ang Manila Zoo?,The system has no verified history of the zoo yet; add it to the FAQ
+train.csv,flagged (kept),general,How can I contact the zoo?,Only the security hotline is in the system; add the zoo's office contact details to the FAQ
+train.csv,flagged (kept),general,Ano ang contact number ninyo?,Only the security hotline is in the system; add the zoo's office contact details to the FAQ
+train.csv,removed,general,Can I volunteer at the zoo?,Service or policy the system has no verified information on
+train.csv,removed,general,How do I adopt an animal?,Service or policy the system has no verified information on
+train.csv,removed,general,Can I bring a tripod?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Is there a coffee shop?,Service or policy the system has no verified information on
+train.csv,removed,facilities,May tubig ba na libre?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Where is the drinking fountain?,Service or policy the system has no verified information on
+train.csv,removed,facilities,Is there a place to change diapers?,Service or policy the system has no verified information on
+train.csv,removed,facilities,May changing table ba sa CR?,Service or policy the system has no verified information on
+train.csv,flagged (kept),facilities,Where can I rent a wheelchair?,Wheelchairs are only confirmed by an FAQ answer (available at the entrance)
+train.csv,removed,facilities,Are there benches in the shade?,Service or policy the system has no verified information on
+train.csv,removed,facilities,saan pwede magpahinga,Service or policy the system has no verified information on
+train.csv,removed,facilities,Is there an ATM inside?,Service or policy the system has no verified information on
+train.csv,removed,facilities,May ATM ba dito?,Service or policy the system has no verified information on
+train.csv,removed,general,Are umbrellas allowed?,Service or policy the system has no verified information on
+train.csv,removed,general,Can I bring a speaker?,Service or policy the system has no verified information on
+train.csv,removed,general,Is there a dress code?,Service or policy the system has no verified information on
+train.csv,removed,general,Is it okay to bring a skateboard?,Service or policy the system has no verified information on
+train.csv,removed,general,pwede ba bike sa loob,Service or policy the system has no verified information on
+train.csv,flagged (kept),general,Who built the Manila Zoo?,The system has no verified history of the zoo yet; add it to the FAQ
+train.csv,flagged (kept),general,how old is manila zoo,The system has no verified history of the zoo yet; add it to the FAQ
+train.csv,flagged (kept),general,Ilang taon na ang Manila Zoo?,The system has no verified history of the zoo yet; add it to the FAQ
+train.csv,flagged (kept),general,What is the zoo's email address?,Only the security hotline is in the system; add the zoo's office contact details to the FAQ
+train.csv,removed,general,Can schools arrange a field trip?,Service or policy the system has no verified information on
+train.csv,removed,general,Paano mag-apply bilang volunteer?,Service or policy the system has no verified information on
+train.csv,flagged (kept),events,When is the next feeding show?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+train.csv,flagged (kept),events,anong oras ang feeding ng tigre,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+train.csv,removed,events,Is there a summer camp?,Service or policy the system has no verified information on
+train.csv,removed,events,Can I book a guided tour for my class?,Service or policy the system has no verified information on
+train.csv,removed,events,What time does the keeper talk start?,Service or policy the system has no verified information on
+train.csv,flagged (kept),parking,May bayad ba ang parking?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,parking rates please,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,How much is parking per hour?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,removed,parking,Pwede bang mag-park sa labas?,"Not about Manila Zoo (transport, outside places, or general knowledge)"
+train.csv,flagged (kept),parking,Is the parking lot open early?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,removed,out_of_scope,How do I commute to Manila Zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Paano mag-commute papunta sa zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,What jeep goes to Manila Zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Can I take a Grab to the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,flagged (kept),parking,Where should our Grab drop us off?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,removed,out_of_scope,Which LRT stop is closest to the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Malapit ba ang Quirino station?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,flagged (kept),parking,Is there a bike rack?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Saan pwedeng iparada ang bisikleta?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,flagged (kept),parking,Is the parking covered?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+train.csv,removed,tickets,Can I pay with Maya?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Pwede GCash sa entrance?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Are tickets cheaper on weekdays?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Is there a group discount for schools?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Magkano para sa field trip?,Service or policy the system has no verified information on
+train.csv,flagged (kept),tickets,How much is the ticket for a foreigner?,Foreigners are assumed to pay the non-Manila-resident rate; confirm with the zoo
+train.csv,removed,tickets,Can I get a refund?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Pwede bang i-refund ang ticket?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Is my ticket valid all day?,Service or policy the system has no verified information on
+train.csv,removed,tickets,Can I go out and come back in with the same ticket?,Service or policy the system has no verified information on
+train.csv,removed,zoo_hours,When is the best time to visit?,Service or policy the system has no verified information on
+train.csv,removed,out_of_scope,Where is the nearest LRT station?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,What is the nearest MRT station?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,What bus should I take to get to Manila Zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Which bus goes to Manila Zoo from Makati?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,How do I get to Manila Zoo from Quezon City?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,How much is a taxi from the airport to the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Where is the nearest bus terminal?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Is there a P2P bus to Manila Zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,How do I get to NAIA from here?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Where can I ride a tricycle?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,How long is the train ride from Cubao?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Saan ang pinakamalapit na LRT?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Anong bus papuntang Manila Zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Paano pumunta sa Manila Zoo galing Cubao?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Saan ang sakayan ng jeep pauwi?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Magkano ang taxi papuntang airport?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Malapit ba ang MRT dito?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Saan bababa sa LRT papunta sa zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Where is SM Manila?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,How far is Rizal Park from here?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Where is the nearest Jollibee outside the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Can you recommend a hotel nearby?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Where is Manila Bay?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Saan ang pinakamalapit na mall?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,What tourist spots are near the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,How do I get to Robinsons Place Manila?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Where can I find a pharmacy outside?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Paano pumunta sa Intramuros galing dito?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,What's the weather today?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Who is the president of the Philippines?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Can you help me with my homework?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,What is 25 times 4?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Ano ang balita ngayon?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Can you order food for me?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Translate this to Japanese,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+train.csv,removed,out_of_scope,Tell me a joke about cars,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,flagged (kept),navigation,Where exactly is the hippo pool?,"Names a place by a different name than the map (Reptile House = Indoor Reptiles, Bird Sanctuary = Aviary, hippo pool = Elephant & Hippopotamus exhibit)"
+test.csv,flagged (kept),navigation,Pano pumunta sa reptile house galing dito?,"Names a place by a different name than the map (Reptile House = Indoor Reptiles, Bird Sanctuary = Aviary, hippo pool = Elephant & Hippopotamus exhibit)"
+test.csv,removed,navigation,Can you point me to the flamingos?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,navigation,Nasan yung aquatic center?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,navigation,Help me find the tarsier exhibit,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,flagged (kept),navigation,Malapit ba dito yung bird sanctuary?,"Names a place by a different name than the map (Reptile House = Indoor Reptiles, Bird Sanctuary = Aviary, hippo pool = Elephant & Hippopotamus exhibit)"
+test.csv,removed,navigation,Where is the orangutan located in the zoo?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,navigation,How do I reach the south exit from the reptiles?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,navigation,Ituro mo nga kung nasaan ang elepante,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,animal_info,How big do hippos get?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,animal_info,Are tarsiers nocturnal?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,animal_info,Explain the diet of the sun bear,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,animal_info,How many years can an elephant live?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,animal_info,Why do giraffes have long necks?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,tickets,Can I pay by card?,Service or policy the system has no verified information on
+test.csv,removed,tickets,Is there a promo for groups?,Service or policy the system has no verified information on
+test.csv,removed,facilities,May drinking fountain ba?,Service or policy the system has no verified information on
+test.csv,flagged (kept),facilities,Can I rent a wheelchair?,Wheelchairs are only confirmed by an FAQ answer (available at the entrance)
+test.csv,removed,facilities,Where can I change my baby's diaper?,Service or policy the system has no verified information on
+test.csv,removed,facilities,Saan pwedeng umupo at magpahinga?,Service or policy the system has no verified information on
+test.csv,removed,facilities,May tindahan ba ng kape?,Service or policy the system has no verified information on
+test.csv,removed,facilities,Where can I store my bag?,Service or policy the system has no verified information on
+test.csv,flagged (kept),parking,Magkano bayad sa parking ng kotse?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+test.csv,flagged (kept),parking,Where do tour buses unload?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+test.csv,removed,out_of_scope,How do I commute to the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,Anong jeep papuntang Manila Zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,flagged (kept),parking,Is parking included in the ticket?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+test.csv,flagged (kept),parking,Can I leave my bike somewhere?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+test.csv,removed,out_of_scope,Nearest train station to the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,flagged (kept),parking,Where can Grab drop us off?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+test.csv,removed,parking,Is there free parking nearby?,"Not about Manila Zoo (transport, outside places, or general knowledge)"
+test.csv,removed,out_of_scope,Paano pumunta dito galing Quiapo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,flagged (kept),events,Anong oras ang pakain sa agila?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+test.csv,removed,events,Is there a keeper talk today?,Service or policy the system has no verified information on
+test.csv,flagged (kept),events,When do they feed the crocodiles?,"Feeding times come from the animal records' starter data, which hasn't been confirmed with the zoo"
+test.csv,removed,events,Schedule ng guided tour?,Service or policy the system has no verified information on
+test.csv,removed,events,Kailan ang pakain sa elepante?,Animal or place that is not at Manila Zoo (not in the animal records or on the map)
+test.csv,removed,general,Can I take a selfie with the animals?,Service or policy the system has no verified information on
+test.csv,flagged (kept),general,When was Manila Zoo founded?,The system has no verified history of the zoo yet; add it to the FAQ
+test.csv,flagged (kept),general,Do you have a hotline?,Only the security hotline is in the system; add the zoo's office contact details to the FAQ
+test.csv,removed,general,Can I use a selfie stick?,Service or policy the system has no verified information on
+test.csv,removed,general,How do I become a volunteer?,Service or policy the system has no verified information on
+test.csv,removed,general,Is there internet here?,Service or policy the system has no verified information on
+test.csv,removed,out_of_scope,Is the MRT near here?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,Saan ang sakayan ng bus pa-Cubao?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,How do I get to Intramuros from the zoo?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,Where's the nearest mall?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,Malapit ba dito ang Rizal Park?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,What's the weather tomorrow?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,Can you book me a taxi?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,removed,out_of_scope,Saan ang terminal ng jeep papuntang Pasay?,"Not about Manila Zoo (transport, outside places, or general knowledge) (out_of_scope intent removed)"
+test.csv,flagged (kept),parking,How much to park a motorcycle?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"
+test.csv,flagged (kept),parking,Is the parking lot guarded?,"Parking location is verified (main entrance, Adriatico St.); fees, hours, capacity and drop-off details are not"

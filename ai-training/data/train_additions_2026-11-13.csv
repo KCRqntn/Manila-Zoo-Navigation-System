@@ -1,0 +1,106 @@
+text,intent
+Which way to the food court?,navigation
+Paano pumunta sa CR mula dito?,navigation
+How far is the Plaza Restaurant from here?,navigation
+Gaano kalayo ang labasan?,navigation
+Anong daan papuntang Primates?,navigation
+Is the Butterfly Garden far from here?,navigation
+Malapit lang ba ang Food Court?,navigation
+Which path leads to the Aviary?,navigation
+How do I reach the parking area from the Aviary?,navigation
+Ituro mo ang daan papunta sa Zebra,navigation
+Can you show me the way to the Souvenir Shop?,navigation
+Saan ako dadaan papunta sa Indoor Reptiles?,navigation
+How long is the walk to the Philippine Endemic exhibit?,navigation
+Where do I buy tickets?,tickets
+Saan bibili ng tiket?,tickets
+Where do I pay the entrance fee?,tickets
+Can I buy tickets at the gate?,tickets
+How do I pay for admission?,tickets
+Is there an entry fee?,tickets
+What does admission cost for a family of five?,tickets
+Can I pay for tickets with GCash?,tickets
+Saan nagbabayad ng entrance?,tickets
+Are tickets cheaper for students?,tickets
+Where can I get medical help?,emergency
+Is there a nurse in the zoo?,emergency
+Saan pwedeng magpagamot dito?,emergency
+I need a doctor,emergency
+My son has a nosebleed,emergency
+Someone collapsed near the Food Court,emergency
+I want to kill myself,emergency
+Gusto ko nang mamatay,emergency
+What is the zoo's phone number?,general
+Ano ang contact number ng zoo?,general
+Can I email the zoo?,general
+Who made you?,general
+Are you a robot?,general
+Are you ChatGPT?,general
+Sino gumawa sa iyo?,general
+What can you help me with?,general
+You are useless,general
+you're not helpful,general
+I love you ZooBot,general
+you're so smart,general
+ang galing mo,general
+ang bobo mo,general
+ok,general
+hmm,general
+nice,general
+I hate this,general
+Can I climb into the enclosure?,general
+Can I feed the monkeys?,general
+Is it okay to touch the snakes?,general
+Bawal ba ang drone sa loob?,general
+Last entry time?,zoo_hours
+Until what time can visitors enter?,zoo_hours
+Hanggang anong oras pwedeng pumasok?,zoo_hours
+What time is the last admission?,zoo_hours
+Any events this weekend?,events
+What activities are there on Sunday?,events
+Ano ang mga programa sa Linggo?,events
+Are there any shows today?,events
+Is there a keeper talk this week?,events
+May bagong event ba sa zoo?,events
+whre can i see the ostrich,animal_location
+were is the tiger,animal_location
+wer is the capybara,animal_location
+saan anf leon,animal_location
+Which area has the cassowary?,animal_location
+Saan nakatira ang zebra sa zoo?,animal_location
+In which exhibit can I find the hornbill?,animal_location
+Give me the list of all animals,animal_info
+What animals can I see in the zoo?,animal_info
+Show me all the animals,animal_info
+Anong mga hayop ang meron dito?,animal_info
+List all the birds,animal_info
+Which animals are endangered?,animal_info
+What reptiles do you have?,animal_info
+Ilan ang hayop sa zoo?,animal_info
+LION,animal_info
+Tiger,animal_info
+capybara,animal_info
+ostrich?,animal_info
+Tell me about the Philippine Eagle,animal_info
+How long do tortoises live?,animal_info
+What is 25 plus 17?,out_of_scope
+Compute 9 times 7,out_of_scope
+Make up a story about pirates,out_of_scope
+Sino ang presidente ng Pilipinas?,out_of_scope
+Who is the mayor of Manila?,out_of_scope
+What year is it?,out_of_scope
+Write python code to sort a list,out_of_scope
+Kantahan mo ako,out_of_scope
+Anong balita ngayon?,out_of_scope
+Who will win the next election?,out_of_scope
+List all the presidents of the Philippines,out_of_scope
+Help me with my homework,out_of_scope
+Ano ang lagay ng panahon bukas?,out_of_scope
+Where is the nearest hospital outside the zoo?,out_of_scope
+Where can I park my car?,parking
+Hi ZooBot!,greeting
+Good evening po,greeting
+Saan ang basurahan?,facilities
+Where can I charge my phone?,facilities
+Saan pwedeng kumain?,facilities
+Where is the souvenir shop?,facilities

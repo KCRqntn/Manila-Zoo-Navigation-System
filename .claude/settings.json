@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/KC/AppData/Local/Temp/claude/9a0a421e1961efd7/241fe060-e5ec-48a1-abc1-04a38e84d065/scratchpad/**)",
+      "Bash(node verify.js)"
+    ]
+  }
+}

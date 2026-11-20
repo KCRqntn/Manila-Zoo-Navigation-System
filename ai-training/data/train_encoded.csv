@@ -1,0 +1,55 @@
+text,label
+Hello,0
+Hi,0
+Good morning,0
+Good afternoon,0
+Good evening,0
+Kumusta,0
+Magandang araw,0
+Magandang umaga,0
+Magandang hapon,0
+Magandang gabi,0
+How are you,0
+Kamusta kayo,0
+Hi chatbot,0
+Hello Manila Zoo,0
+Where is the lion?,1
+Where can I find the lion?,1
+Saan ang leon?,1
+Nasaan ang lion area?,1
+Where can I find the tiger?,1
+Saan makikita ang tigre?,1
+Where is the elephant section?,1
+Nasaan ang elephant area?,1
+How do I go to the giraffe area?,1
+Paano pumunta sa giraffe area?,1
+Where is the entrance?,1
+Saan ang entrance ng zoo?,1
+Where is the exit?,1
+Nasaan ang exit?,1
+Can you guide me around the zoo?,1
+Pwede mo ba akong gabayan paikot ng zoo?,1
+How much is the ticket?,2
+Magkano ang ticket?,2
+How much is the entrance fee?,2
+Magkano ang entrance fee?,2
+How much do I need to pay?,2
+Magkano ang bayad para makapasok?,2
+Do you have admission tickets?,2
+May ticket ba kayo?,2
+Where can I buy tickets?,2
+Saan ako pwede bumili ng ticket?,2
+Can I buy tickets online?,2
+Pwede bang online bumili ng ticket?,2
+What time does the zoo open?,3
+What time does Manila Zoo open?,3
+What time do you open?,3
+When does the zoo open?,3
+Anong oras kayo bukas?,3
+Anong oras nagbubukas ang Manila Zoo?,3
+Kailan bukas ang zoo?,3
+Anong oras ang opening time?,3
+What time does the zoo close?,3
+Anong oras nagsasara ang zoo?,3
+Is the zoo open today?,3
+Bukas ba ang zoo ngayon?,3

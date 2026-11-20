@@ -1,0 +1,26 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "preinstall": "node -e \"const fs=require('fs'); for (const f of ['package-lock.json','yarn.lock']) { try { fs.rmSync(f); } catch {} } const ua = process.env.npm_config_user_agent || ''; if (!ua.startsWith('pnpm/')) { console.error('Use pnpm instead'); process.exit(1); }\"",
+    "dev": "concurrently -k \"pnpm run dev:api\" \"pnpm run dev:web\"",
+    "dev:api": "pnpm --filter @workspace/api-server run dev",
+    "dev:web": "pnpm --filter @workspace/manila-zoo run dev",
+    "dev:ai": "cd ai-training && python -m uvicorn predict_api:app --host 127.0.0.1 --port 8000",
+    "train:ai": "cd ai-training && python train.py",
+    "test:chatbot": "pnpm --filter @workspace/scripts run test:chatbot",
+    "create-admin": "pnpm --filter @workspace/api-server run create-admin",
+    "create-tourist": "pnpm --filter @workspace/api-server run create-tourist",
+    "create-director": "pnpm --filter @workspace/api-server run create-director",
+    "build": "pnpm run typecheck && pnpm -r --if-present run build",
+    "typecheck:libs": "tsc --build",
+    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+  },
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "prettier": "^3.8.4",
+    "typescript": "~5.9.3"
+  }
+}

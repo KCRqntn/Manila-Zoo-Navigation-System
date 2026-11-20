@@ -1,0 +1,11 @@
+# Keep secrets, dependencies, build output and the large model files out of the build
+.env
+.env.*
+deploy/.env.production
+**/node_modules
+**/dist
+**/.tsbuildinfo
+ai-training
+backups
+.git
+.agents

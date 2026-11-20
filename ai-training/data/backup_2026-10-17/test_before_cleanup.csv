@@ -1,0 +1,133 @@
+text,intent
+Heyy good morning ZooBot,greeting
+Magandang umaga sa inyo,greeting
+Hello hello,greeting
+hi kumusta ka na,greeting
+Good afternoon po sa inyo,greeting
+Hiya!,greeting
+Kumusta po kayo diyan,greeting
+Hello! Nice to meet you,greeting
+Hi po ate,greeting
+Good eve!,greeting
+hellooo,greeting
+Magandang hapon ZooBot,greeting
+Where exactly is the hippo pool?,navigation
+Pano pumunta sa reptile house galing dito?,navigation
+Can you point me to the flamingos?,navigation
+Nasan yung aquatic center?,navigation
+What's the fastest way to the eagle?,navigation
+saan dadaan papuntang savanna,navigation
+Help me find the tarsier exhibit,navigation
+Which direction is the main gate?,navigation
+Malapit ba dito yung bird sanctuary?,navigation
+Where is the orangutan located in the zoo?,navigation
+How do I reach the south exit from the reptiles?,navigation
+Ituro mo nga kung nasaan ang elepante,navigation
+How big do hippos get?,animal_info
+Ano ang natural na tirahan ng agila?,animal_info
+Are tarsiers nocturnal?,animal_info
+What do pythons eat in the wild?,animal_info
+Critically endangered ba ang cockatoo?,animal_info
+Explain the diet of the sun bear,animal_info
+How many years can an elephant live?,animal_info
+Ano ang scientific name ng buwaya?,animal_info
+Is the tortoise herbivore or carnivore?,animal_info
+Share a fun fact about owls,animal_info
+Gaano kabigat ang lion?,animal_info
+Why do giraffes have long necks?,animal_info
+Entrance fee for a family of five?,tickets
+Magkano ticket ng estudyante?,tickets
+Do seniors pay less?,tickets
+How much po ang admission?,tickets
+Can I pay by card?,tickets
+Ticket price for kids 5 years old?,tickets
+Libre ba pag PWD?,tickets
+Where is the ticket booth?,tickets
+Is there a promo for groups?,tickets
+presyo ng tiket,tickets
+Do infants need a ticket?,tickets
+How much is it to get in?,tickets
+Open ba kayo bukas ng umaga?,zoo_hours
+What time do gates close tonight?,zoo_hours
+Is the zoo closed on New Year?,zoo_hours
+Hanggang ilang oras kayo open?,zoo_hours
+Do you open early on weekends?,zoo_hours
+Sarado ba ngayong Lunes?,zoo_hours
+What are the visiting hours?,zoo_hours
+Is Manila Zoo open at 7 AM?,zoo_hours
+Anong oras last entry?,zoo_hours
+Open ba kayo tuwing Martes?,zoo_hours
+When do you stop letting people in?,zoo_hours
+Operating hours po?,zoo_hours
+Need to pee where is the cr,facilities
+Saan may kainan dito?,facilities
+Any place to buy snacks?,facilities
+May drinking fountain ba?,facilities
+Can I rent a wheelchair?,facilities
+Where can I change my baby's diaper?,facilities
+Saan pwedeng umupo at magpahinga?,facilities
+Is there a gift shop?,facilities
+Nearest restroom from the Savanna?,facilities
+May tindahan ba ng kape?,facilities
+Where can I store my bag?,facilities
+Is there a canteen?,facilities
+Please help my son is missing,emergency
+May dumudugo dito kailangan ng tulong,emergency
+My friend collapsed near the aviary,emergency
+Nasaan ang clinic?,emergency
+I think I broke my ankle,emergency
+Someone is choking!,emergency
+Naligaw ang kapatid ko,emergency
+Security! Someone stole my phone,emergency
+My child got stung by a bee,emergency
+Kailangan namin ng doktor,emergency
+There's a snake loose on the path,emergency
+I feel faint and need medical help,emergency
+Is there a car park near the gate?,parking
+Magkano bayad sa parking ng kotse?,parking
+Where do tour buses unload?,parking
+How do I commute to the zoo?,out_of_scope
+Anong jeep papuntang Manila Zoo?,out_of_scope
+Is parking included in the ticket?,parking
+Can I leave my bike somewhere?,parking
+May parking ba para sa motor?,parking
+Nearest train station to the zoo?,out_of_scope
+Where can Grab drop us off?,parking
+Is there free parking nearby?,parking
+Paano pumunta dito galing Quiapo?,out_of_scope
+Any shows this afternoon?,events
+Anong oras ang pakain sa agila?,events
+Is there a keeper talk today?,events
+What events are coming up?,events
+May palabas ba sa weekend?,events
+When do they feed the crocodiles?,events
+Are there activities for kids today?,events
+Schedule ng guided tour?,events
+Any special programs this month?,events
+Kailan ang pakain sa elepante?,events
+Is there an educational talk?,events
+What's on at the zoo this Saturday?,events
+Can I bring my cat?,general
+Allowed ba ang vape?,general
+Can I take a selfie with the animals?,general
+When was Manila Zoo founded?,general
+Pwede ba magdala ng baon?,general
+Do you have a hotline?,general
+maraming salamat,general
+Can I use a selfie stick?,general
+How do I become a volunteer?,general
+Bawal bang hawakan ang hayop?,general
+Thanks! Goodbye,general
+Is there internet here?,general
+Is the MRT near here?,out_of_scope
+Saan ang sakayan ng bus pa-Cubao?,out_of_scope
+How do I get to Intramuros from the zoo?,out_of_scope
+Where's the nearest mall?,out_of_scope
+Malapit ba dito ang Rizal Park?,out_of_scope
+What's the weather tomorrow?,out_of_scope
+Can you book me a taxi?,out_of_scope
+Saan ang terminal ng jeep papuntang Pasay?,out_of_scope
+Where is the parking entrance?,parking
+May parking ba para sa school bus?,parking
+How much to park a motorcycle?,parking
+Is the parking lot guarded?,parking
